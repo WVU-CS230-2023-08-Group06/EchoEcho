@@ -1,1 +1,14 @@
+body {
+	background-color: black;
+}
 
+#welcome {
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+	color:forestgreen;
+	font-weight: 1000;
+}
+
+#login {
+	background-color:forestgreen;
+	margin-left:90%;
+}
