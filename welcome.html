@@ -7,6 +7,61 @@
     <title>EchoEcho</title>
     
 </head>
+
+<script>
+    function generateRandomString(length) {
+          let text = '';
+          let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+          for (let i = 0; i < length; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+          }
+          return text;
+    }
+    
+    async function generateCodeChallenge(codeVerifier) {
+        function base64encode(string) {
+            return btoa(String.fromCharCode.apply(null, new Uint8Array(string)))
+              .replace(/\+/g, '-')
+              .replace(/\//g, '_')
+              .replace(/=+$/, '');
+          }
+
+      const encoder = new TextEncoder();
+      const data = encoder.encode(codeVerifier);
+      const digest = await window.crypto.subtle.digest('SHA-256', data);
+
+      return base64encode(digest);
+    }
+    
+    function requestAuthentication() {
+        const clientId = '850b3d0b9dba47c689f25160b90f1448'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
+        const redirectUri = 'http://127.0.0.1:5500/EchoEcho-main/welcome.html';
+
+        let codeVerifier = generateRandomString(128);
+
+        generateCodeChallenge(codeVerifier).then(codeChallenge => {
+            let state = generateRandomString(16);
+            let scope = 'user-read-private user-read-email';
+
+            localStorage.setItem('code_verifier', codeVerifier);
+
+            let args = new URLSearchParams({
+                response_type: 'code',
+                client_id: clientId,
+                scope: scope,
+                redirect_uri: redirectUri,
+                state: state,
+                code_challenge_method: 'S256',
+                code_challenge: codeChallenge
+            });
+
+            window.location = 'https://accounts.spotify.com/authorize?' + args;
+        });
+    }
+    
+</script>
+
 <body>
     <header>
         <h1>EchoEcho</h1>
@@ -14,7 +69,7 @@
     <div id="welcome-message">
         <h2>Welcome!</h2>
         <p>A place for all of your favorite songs, all the time.</p>
-        <button id="full-recap-button">Get your top songs</button>
+        <input type="button" onClick="requestAuthentication()" class="loginButton" value="Login" />
     </div>
     <footer>
     <button id="logout-button">Logout</button>
