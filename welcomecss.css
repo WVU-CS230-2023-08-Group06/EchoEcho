@@ -2,12 +2,12 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-image: url('background.jpg');
-    background-size: cover; /* Set the background image to cover the entire viewport */
-    background-color: white; /* Fallback color if the image isn't available */
+    background-size: cover;
+    background-color: white;
     color: white;
     margin: 0;
     padding: 0;
-    background-attachment: fixed; /* Fixed background so it doesn't scroll with content */
+    background-attachment: fixed;
 }
 
 header {
