@@ -3,11 +3,11 @@ body {
     text-align: center;
     background-image: url('background.jpg');
     background-size: cover;
-    background-color: white;
+	background-color: white;
     color: white;
     margin: 0;
     padding: 0;
-    background-attachment: fixed;
+	background-attachment: fixed;
 }
 
 header {
@@ -21,7 +21,13 @@ h1 {
 }
 
 #welcome-message {
+	background-color: black;
+	color: white;
+	padding: 20px;
+	border-radius: 10px;
+	display: inline-block;
     margin: 100px 0;
+	text-align: center;
 }
 
 h2 {
