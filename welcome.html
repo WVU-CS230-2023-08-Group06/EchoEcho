@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="welcomecss.css">
+    <script src="getData.js"></script>
     <title>EchoEcho</title>
     
 </head>
@@ -14,8 +15,7 @@
     <div id="welcome-message">
         <h2>Welcome!</h2>
         <p>A place for all of your favorite songs, all the time.</p>
-        <button id="full-recap-button">Get your top songs</button>
-    </div>
+        <input type="button" onClick="requestAuthentication()" class="loginButton" value="Login With Spotify" />    </div>
     <footer>
     <button id="logout-button">Logout</button>
     <button id="next-slide-button">Next Slide</button>

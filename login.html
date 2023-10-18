@@ -77,8 +77,8 @@
 		}
 		
 		function requestAuthentication() {
-			const clientId = 'YOUR_CLIENT_ID'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
-			const redirectUri = 'http://localhost:8080';
+			const clientId = '7820cb5ed08b4ad490fcad0e33712d6e'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
+			const redirectUri = 'http://127.0.0.1:5500/welcome.html';
 
 			let codeVerifier = generateRandomString(128);
 
@@ -92,7 +92,7 @@
 					response_type: 'code',
 					client_id: clientId,
 					scope: scope,
-					redirect_uri: login.html, //need a redirect uri, website isn't published yet though
+					redirect_uri: 'http://127.0.0.1:5500/welcome.html', 
 					state: state,
 					code_challenge_method: 'S256',
 					code_challenge: codeChallenge
