@@ -3,86 +3,53 @@ body {
     text-align: center;
     background-image: url('background.jpg');
     background-size: cover;
-	background-color: white;
-    color: white;
+    background-color: pink; /* Change background color to pink */
+    color: rgb(183, 39, 183); /* Change text color to purple */
     margin: 0;
     padding: 0;
-	background-attachment: fixed;
+    background-attachment: fixed;
 }
 
 header {
-    background-color: black;
-    color: green;
+    background-color: rgb(183, 39, 183); /* Change header background color to purple */
+    color: pink; /* Change header text color to pink */
     padding: 20px 0;
 }
 
-h1 {
-    margin: 0;
-}
-
 #welcome-message {
-	background-color: black;
-	color: white;
-	padding: 20px;
-	border-radius: 10px;
-	display: inline-block;
+    background-color: rgb(183, 39, 183); /* Change background color of the welcome message to purple */
+    color: pink; /* Change text color of the welcome message to pink */
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
     margin: 100px 0;
-	text-align: center;
-}
-
-h2 {
-    font-size: 36px;
-}
-
-p {
-    font-size: 24px;
+    text-align: center;
 }
 
 button {
-    padding: 15px 30px;
+    padding: 15px 20px;
     font-size: 20px;
-    background-color: green;
-    color: black;
+    background-color: pink; /* Change button background color to pink */
+    color: purple; /* Change button text color to purple */
     border: none;
     cursor: pointer;
     border-radius: 10px;
 }
 
-#logout-button {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    border-radius: 10px;
-}
-
-#next-slide-button {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    border-radius: 10px;
-}
-
-footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 35px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
 
 .loginButton {
-    margin-top: 20px;
+    margin-top: 30px;
     border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 15px;
+    line-height: 3;
+    padding: 0 35px;
+    font-size: 30px;
     text-align: center;
-    color: black;
-    background-color: green;
-    border-radius: 10px;
+    color: rgb(183, 39, 183); /* Change button text color to purple */
+    background-color: pink; /* Change button background color to pink */
+    border-radius: 20px;
 }
+
 .loginButton:hover {
-    background-color: limegreen;
+    background-color: pink; /* Change hover background color to pink */
+    color: rgb(183, 39, 183); /* Change hover text color to purple */
 }
