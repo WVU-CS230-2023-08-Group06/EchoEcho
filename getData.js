@@ -1,4 +1,3 @@
-
 		function generateRandomString(length) {
   			let text = '';
   			let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -30,7 +29,7 @@
 
 			generateCodeChallenge(codeVerifier).then(codeChallenge => {
 				let state = generateRandomString(16);
-				let scope = 'user-read-private user-read-email';
+				let scope = 'user-read-private user-read-email user-top-read';
 
 				localStorage.setItem('code_verifier', codeVerifier);
 
@@ -49,19 +48,6 @@
             
 			requestToken();
 		}
-
-		async function getProfile() {
-			let accessToken = localStorage.getItem('access_token');
-		  
-			const response = await fetch('https://api.spotify.com/v1/me', {
-			  headers: {
-				Authorization: 'Bearer ' + accessToken
-			  }
-			});
-		  
-			const data = await response.json();
-			console.log(data);
-		  }
 
 		const clientId = '7820cb5ed08b4ad490fcad0e33712d6e'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
 		const redirectUri = 'http://127.0.0.1:5500/welcome.html';
@@ -101,8 +87,78 @@
     	console.error('Error:', error);
   	});
 }
+
+const getRefreshToken = async () => {
+
+	// refresh token that has been previously stored
+	const refreshToken = localStorage.getItem('refresh_token');
+	const url = "https://accounts.spotify.com/api/token";
+ 
+	 const payload = {
+	   method: 'POST',
+	   headers: {
+		 'Content-Type': 'application/x-www-form-urlencoded'
+	   },
+	   body: new URLSearchParams({
+		 grant_type: 'refresh_token',
+		 refresh_token: refreshToken,
+		 client_id: clientId
+	   }),
+	 }
+	 body = await fetch(url, payload);
+	 const response = await body.json();
+ 
+	 localStorage.setItem('access_token', response.accessToken);
+	 localStorage.setItem('refresh_token', response.refreshToken);
+   }
+
+   async function getProfile() {
+	let accessToken = localStorage.getItem('access_token');
+  
+	const response = await fetch('https://api.spotify.com/v1/me', {
+	  headers: {
+		Authorization: 'Bearer ' + accessToken
+	  }
+	});
+  
+	const data = await response.json();
+	console.log(data);
+  	}
+
+// Function to get the user's top artists
+async function getTopArtists() {
+	let accessToken = localStorage.getItem('access_token');
+  
+	// Initialize an empty array to store all top artists
+	let allArtists = [];
+  
+	async function fetchTopArtists(offset = 0) {
+	  const response = await fetch(`https://api.spotify.com/v1/me/top/artists?limit=50&offset=${offset}`, {
+		headers: {
+		  Authorization: 'Bearer ' + accessToken,
+		},
+	  });
+  
+	  const data = await response.json();
+	  if (data.items && data.items.length > 0) {
+		allArtists = allArtists.concat(data.items);
+		// Check for pagination and fetch the next page if available
+		if (data.next) {
+		  const nextOffset = new URL(data.next).searchParams.get('offset');
+		  await fetchTopArtists(nextOffset);
+		} else {
+		  console.log(allArtists); // All top artists retrieved
+		}
+	  }
+	}
+  
+	await fetchTopArtists();
+  }
 		
 if (localStorage.getItem('access_token') != null) {
 	requestToken();
 	getProfile();
+	getTopArtists();
 }
+
+
