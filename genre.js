@@ -1,6 +1,6 @@
 import { genresData } from './getData.js';
 
-// Now, you can use genresData in genre.js
+
 console.log(genresData); // This will log the array from getData.js
 
 // Initialize genresCount outside the function
@@ -29,7 +29,7 @@ async function fetchTopArtists() {
 
       const data = await response.json();
 
-      // Assuming data.items is an array of top artists
+      
       data.items.forEach(artist => {
           artist.genres.forEach(genre => {
               if (genre in genresCount) {
@@ -42,7 +42,7 @@ async function fetchTopArtists() {
 
       console.log('Genres count:', genresCount);
 
-      // Now you can display this information on your web page.
+      
       updateGenreChart();
   } catch (error) {
       console.error('Error:', error);
@@ -60,7 +60,7 @@ function updateGenreChart() {
             backgroundColor: [
                 'rgba(255, 99, 132, 0.7)',
                 'rgba(54, 162, 235, 0.7)',
-                // Add more colors as needed
+                
             ],
         }],
     };
