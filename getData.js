@@ -147,7 +147,8 @@ async function getTopArtists() {
 		  const nextOffset = new URL(data.next).searchParams.get('offset');
 		  await fetchTopArtists(nextOffset);
 		} else {
-		  console.log(allArtists); // All top artists retrieved
+		  	console.log(allArtists); // All top artists retrieved
+			localStorage.setItem('top_artists', allArtists);
 		}
 	  }
 	}
