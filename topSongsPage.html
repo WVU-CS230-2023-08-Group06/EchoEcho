@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="topSongs.css">
+    <script src="getTrack.js"></script>
+	<title>Your Top Songs</title>
+</head>
+
+<body>
+	<header>
+		<h1>Your Top Songs</h1>
+	</header>
+	
+	<div class="songDisplay">
+		<header>
+            <script>
+                if (localStorage.getItem('access_token') != null) {
+                  requestToken();
+                  getProfile();
+                  getTopTracks();
+                }
+              </script>
+        </header>
+		<ol id="songList"></ol>
+	</div>
+
+</body>
+</html>
