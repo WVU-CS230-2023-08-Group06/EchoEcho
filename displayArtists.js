@@ -25,7 +25,14 @@ if (topArtistsString !== null && typeof topArtistsString === "string") {
 			artistLink.textContent = artist.name;
 			artistLink.className = 'artistLinks';
 
+			/*
+			var genre = document.createElement('h2');
+			genre.textContent = artist.genres[0];
+			genre.className = 'artistGenre';
+*/
+			
 			listItem.appendChild(artistPicture);
+			//listItem.appendChild(genre);
 			listItem.appendChild(artistLink);
 			console.log(artist.name);
 			artistList.appendChild(listItem);
