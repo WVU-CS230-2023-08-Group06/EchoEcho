@@ -3,16 +3,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genre Page</title>
-    <script src="getGenres.js"></script> <!-- Include the JavaScript file -->
+    <link rel="stylesheet" type="text/css" href="genreStyles.css">
+    <title>Your Top Genres</title>
+    <script src="getGenres.js"></script> 
+    <script src="genre.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
    
 </head>
 <body>
-    <header>
-        <h1>Your Top Genres</h1>
-    </header>
+<header>
+    <h1>Your Top Genres</h1>
+    <a href="welcome.html">
+        <button id="returnButton">Back to homepage</button>
+    </a>
+</header>
+<div class="genreDisplay">
+    <header id="sticky"></header>
+    <ol id="genreList"></ol>
+</div>
     <canvas id="genreChart"></canvas> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>

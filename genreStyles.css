@@ -17,16 +17,61 @@ header {
     color: pink; /* Change header text color to pink */
     padding: 20px 0;
 }
-
-.artistDisplay {
+#sticky {
+    position:fixed;
+    top:0;
+}
+.genreDisplay {
     background-color: rgb(183, 39, 183); /* Change background color of the welcome message to purple */
-    color: pink; /* Change text color of the welcome message to pink */
-    padding: 20px;
+    color: rgb(12, 12, 12); /* Change text color of the welcome message to pink */
+    
     border-radius: 10px;
     display: inline-block;
     margin: 100px 0;
     text-align: center;
 	width: 50%;
+    height: 500px;
 	overflow-x: auto;
 	overflow-y: auto;
+}
+.genreList {
+    margin-bottom:10px;
+    border:1px solid #000;
+    border-radius:10px;
+}
+
+.genreList:hover {
+    background-color:#000;
+    color:white;
+}
+
+.genreLinks {
+    color:white;
+    display:block;
+    padding:30px;
+    border-radius:10px;
+    text-decoration: none;
+    /*width:100%;
+    height:100%;*/
+}
+
+.genreLinks:hover {
+    background-color:magenta;
+    color:black;
+}
+
+
+#returnButton {
+    padding: 15px 20px;
+    font-size: 20px;
+    background-color: pink; /* Change button background color to pink */
+    color: purple; /* Change button text color to purple */
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#returnButton:hover {
+    background-color: magenta;
+    color:white;
 }
