@@ -160,11 +160,13 @@ async function getTopArtists() {
 
   //version similar to getTopArtists in getData.js
 async function getTopTracks() {
+	//fetch access token
 	let accessToken = localStorage.getItem('access_token');
   
-	// Initialize an empty array to store all top tracks
+	//Initialize an empty array to store all top tracks
 	let allTracks = [];
   
+	//Request data from api
 	async function fetchTopTracks(offset = 0) {
 	  const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?limit=20&offset=${offset}`, {
 		headers: {
@@ -172,14 +174,16 @@ async function getTopTracks() {
 		},
 	  });
   
+	  //Store recieved data in JSON format
 	  const data = await response.json();
 	  if (data.items && data.items.length > 0) {
 		allTracks = allTracks.concat(data.items);
-		// Check for pagination and fetch the next page if available
+		//Check for pagination and fetch the next page if available
 		if (data.next) {
 		  const nextOffset = new URL(data.next).searchParams.get('offset');
 		  await fetchTopTracks(nextOffset);
 		} else {
+			//Store as a JSON string in local storage when there are no objects left
 			localStorage.setItem('top_tracks', JSON.stringify(allTracks));
 			let topdbug = localStorage.getItem('top_tracks')
 		  	console.log(allTracks); // All top tracks retrieved
