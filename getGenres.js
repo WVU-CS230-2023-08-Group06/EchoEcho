@@ -51,7 +51,7 @@ function addToGenreList(genre, genreList) {
 fetch("https://api.spotify.com/v1/me",
     { headers: {'Authorization': 'Bearer ' + token }}
   ).then(function(user) {
-  //the returne her is a promise that will return a set
+  //the return here is a promise that will return a set
     let setOfArtists = new Set();
     return getArtistsFromSavedTracks(
       'https://api.spotify.com/v1/me/tracks',

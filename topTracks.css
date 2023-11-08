@@ -17,13 +17,15 @@ header {
     color: pink; /* Change header text color to pink */
     padding: 20px 0;
 }
+
 #sticky {
     position:fixed;
     top:0;
 }
-.genreDisplay {
+
+.trackDisplay {
     background-color: rgb(183, 39, 183); /* Change background color of the welcome message to purple */
-    color: rgb(12, 12, 12); /* Change text color of the welcome message to pink */
+    color: black; /* Change text color of the welcome message to pink */
     
     border-radius: 10px;
     display: inline-block;
@@ -34,18 +36,19 @@ header {
 	overflow-x: auto;
 	overflow-y: auto;
 }
-.genreList {
+
+.trackList {
     margin-bottom:10px;
     border:1px solid #000;
     border-radius:10px;
 }
 
-.genreList:hover {
+.trackList:hover {
     background-color:#000;
     color:white;
 }
 
-.genreLinks {
+.trackLinks {
     color:white;
     display:block;
     padding:30px;
@@ -55,11 +58,20 @@ header {
     height:100%;*/
 }
 
-.genreLinks:hover {
+.trackLinks:hover {
     background-color:magenta;
     color:black;
 }
 
+.trackImg {
+    display:inline-block;
+    height:100px;
+    border-radius:10px;
+}
+
+.trackGenre {
+    display:inline-block;
+}
 
 #returnButton {
     padding: 15px 20px;
