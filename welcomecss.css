@@ -36,6 +36,11 @@ button {
     border-radius: 10px;
 }
 
+#artistButton {
+    
+    bottom:0;
+    align-items: center;
+}
 
 .loginButton {
     margin-top: 30px;
