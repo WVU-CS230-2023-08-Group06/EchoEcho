@@ -127,11 +127,13 @@ const getRefreshToken = async () => {
 
 // Function to get the user's top artists
 async function getTopArtists() {
+	//fetch access token
 	let accessToken = localStorage.getItem('access_token');
   
 	// Initialize an empty array to store all top artists
 	let allArtists = [];
   
+	//Request data from api
 	async function fetchTopArtists(offset = 0) {
 	  const response = await fetch(`https://api.spotify.com/v1/me/top/artists?limit=50&offset=${offset}`, {
 		headers: {
@@ -139,14 +141,16 @@ async function getTopArtists() {
 		},
 	  });
   
+	  //Store recieved data in JSON format
 	  const data = await response.json();
 	  if (data.items && data.items.length > 0) {
 		allArtists = allArtists.concat(data.items);
-		// Check for pagination and fetch the next page if available
+		//Check for pagination and fetch the next page if available
 		if (data.next) {
 		  const nextOffset = new URL(data.next).searchParams.get('offset');
 		  await fetchTopArtists(nextOffset);
 		} else {
+			//Store as a JSON string in local storage when there are no objects left
 			localStorage.setItem('top_artists', JSON.stringify(allArtists));
 			let topdbug = localStorage.getItem('top_artists')
 		  	console.log(allArtists); // All top artists retrieved
