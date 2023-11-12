@@ -74,7 +74,6 @@ fetch("https://api.spotify.com/v1/me",
     }, {});
     return flattenedGenreList;
   });
-});
 //this function is applied to an array and then applies a chunk size of 50 to it, this way we don't have to convert the array
 Object.defineProperty(Array.prototype, 'chunk', {
     value: function(chunkSize) {
