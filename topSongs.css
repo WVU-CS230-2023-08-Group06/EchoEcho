@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-color: pink; /* Change background color to pink */
+    color: rgb(183, 39, 183); /* Change text color to purple */
+    margin: 0;
+    padding: 0;
+    background-attachment: fixed;
+}
+
+header {
+    background-color: rgb(183, 39, 183); /* Change header background color to purple */
+    color: pink; /* Change header text color to pink */
+    padding: 20px 0;
+}
+
+.songDisplay {
+    background-color: rgb(183, 39, 183); /* Change background color of the welcome message to purple */
+    color: pink; /* Change text color of the welcome message to pink */
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 100px 0;
+    text-align: center;
+	width: 50%;
+	overflow-x: auto;
+	overflow-y: auto;
+}
