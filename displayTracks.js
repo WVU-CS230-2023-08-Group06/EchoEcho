@@ -5,7 +5,7 @@ function displayTracks() {
 	
 	var topTracksString = localStorage.getItem('top_tracks');
 if (topTracksString !== null && typeof topTracksString === "string") {
-    console.log(topSongsString);
+    console.log(topTracksString);
 	var topTracks = JSON.parse(topTracksString);   // deserializing here
     console.log("Succesfully retrieved 'tasks' and contents.");
 }
@@ -17,7 +17,7 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 			listItem.className = 'trackList';
 			
 			var trackPicture = document.createElement('img');
-			trackPicture.src = track.images[0].url;
+			trackPicture.src = track.album.images[0].url;
 			trackPicture.className = 'trackImg';
 
 			var trackLink = document.createElement('a');
