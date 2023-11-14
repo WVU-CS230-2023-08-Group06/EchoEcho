@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<link rel="stylesheet" href="StyleSheet.css">
-		<title>EchoEcho: Your Spotify Companion!</title>	
-		
-	</head>
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="artistStyles.css">
+    <script src="displayArtists.js"></script>
+	<title>Your Top Artists</title>
+</head>
+
+<body>
+	<header>
+		<h1>Your Top Artists</h1>
+		<a href="welcome.html">
+			<button id="returnButton">Back to Homepage</button>
+		</a>
+	</header>
 	
-	<body>
-		<button type="button" id="login">Log In With Spotify</button>
-		<center><h1 id="welcome">Welcome</h1></center>
-		
-	</body>
-
+	<div class="artistDisplay">
+		<header id="sticky"></header>
+		<ol id="artistList"></ol>
+	</div>
+</body>
 </html>
-
