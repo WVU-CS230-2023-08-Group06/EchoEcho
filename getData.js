@@ -24,7 +24,6 @@ return base64encode(digest);
 }
 
 function requestAuthentication() {
-
   let codeVerifier = generateRandomString(128);
 
   generateCodeChallenge(codeVerifier).then(codeChallenge => {
@@ -50,7 +49,7 @@ function requestAuthentication() {
 }
 
 const clientId = '850b3d0b9dba47c689f25160b90f1448'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
-const redirectUri = 'http://127.0.0.1:5500/EchoEcho-main/EchoEcho/welcome.html';
+const redirectUri = 'http://127.0.0.1:5500/EchoEcho-main/EchoEcho/homepage.html';
 
 function requestToken() {
 //parse URL and save code parameter to request access token

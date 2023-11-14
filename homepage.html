@@ -3,18 +3,20 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="artistStyles.css">
+	<link rel="stylesheet" type="text/css" href="topTracks.css">
+	<link rel="stylesheet" type="text/css" href="welcomecss.css">
     <script src="displayArtists.js"></script>
-	<title>Your Top Artists</title>
+	<script src="getData.js"></script>
+	<script src="displayTracks.js"></script>
+	<input type="button" onClick="requestAuthentication()" class="loginButton" value="Login With Spotify" />
 </head>
 
 <body>
-	<header>
-		<h1>Your Top Artists</h1>
-		<a href="welcome.html">
-			<button id="returnButton">Back to Homepage</button>
-		</a>
-	</header>
-	
+	<div class="trackDisplay">
+		<header id="sticky"></header>
+		<ol id="trackList"></ol>
+	</div>
+
 	<div class="artistDisplay">
 		<header id="sticky"></header>
 		<ol id="artistList"></ol>
