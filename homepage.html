@@ -2,24 +2,30 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="artistStyles.css">
-	<link rel="stylesheet" type="text/css" href="topTracks.css">
-	<link rel="stylesheet" type="text/css" href="welcomecss.css">
-    <script src="displayArtists.js"></script>
-	<script src="getData.js"></script>
-	<script src="displayTracks.js"></script>
-	<input type="button" onClick="requestAuthentication()" class="loginButton" value="Login With Spotify" />
+	<link rel="stylesheet" type="text/css" href="homeStyles.css">
+    <script src=homeData.js></script>
 </head>
+
+<header>
+	<h1>Your Music in Review</h1>
+</header>
 
 <body>
 	<div class="trackDisplay">
+        <a href="topTracksPage.html">
+        <button type="button" id="tracksButton">Top Tracks</button>
+        </a>
 		<header id="sticky"></header>
 		<ol id="trackList"></ol>
 	</div>
 
 	<div class="artistDisplay">
+		<a href="topTracksPage.html">
+            <button type="button" id="tracksButton">Top Tracks</button>
+        </a>		
 		<header id="sticky"></header>
 		<ol id="artistList"></ol>
+		<a href="topArtistPage.html">
 	</div>
 </body>
 </html>
