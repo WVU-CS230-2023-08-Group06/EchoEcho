@@ -10,8 +10,11 @@ body {
     background-attachment: fixed;
 }
 
-li {
-    list-style-position: outside;
+ol {
+    list-style-position: inside;
+    margin: 10px 0; /* Vertical margin */
+    text-align: center;
+    padding: 10px;
 }
 
 header {
