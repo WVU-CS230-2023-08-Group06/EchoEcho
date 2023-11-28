@@ -50,7 +50,7 @@
 		}
 
 const clientId = '850b3d0b9dba47c689f25160b90f1448'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
-const redirectUri = 'http://127.0.0.1:5500/EchoEcho-main/EchoEcho/homepage.html';
+const redirectUri = 'http://127.0.0.1:5500/homepage.html';
 
 		function requestToken() {
 		//parse URL and save code parameter to request access token

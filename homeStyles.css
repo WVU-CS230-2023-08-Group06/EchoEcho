@@ -20,7 +20,7 @@ ol {
 header {
     background-color: rgb(183, 39, 183); /* Change header background color to purple */
     color: pink; /* Change header text color to pink */
-    padding: 20px 0;
+    padding: 20px;
 }
 
 #sticky {
@@ -39,6 +39,7 @@ header {
     height: 50%;
 	overflow-x: hidden;
 	overflow-y: auto;
+    padding: 15px;
 }
 
 .artistList, .trackList{
