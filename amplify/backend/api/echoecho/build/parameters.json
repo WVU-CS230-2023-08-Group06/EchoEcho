@@ -1,0 +1,7 @@
+{
+    "AppSyncApiName": "echoecho",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "S3DeploymentBucket": "amplify-echoecho-dev-140400-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/32071360d225e5f1d433e5a45713163687f78da1"
+}

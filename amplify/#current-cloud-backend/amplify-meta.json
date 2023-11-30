@@ -1,0 +1,15 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-echoecho-dev-140400-authRole",
+      "UnauthRoleArn": "arn:aws:iam::712067497542:role/amplify-echoecho-dev-140400-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::712067497542:role/amplify-echoecho-dev-140400-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-echoecho-dev-140400-deployment",
+      "UnauthRoleName": "amplify-echoecho-dev-140400-unauthRole",
+      "StackName": "amplify-echoecho-dev-140400",
+      "StackId": "arn:aws:cloudformation:us-east-1:712067497542:stack/amplify-echoecho-dev-140400/382fd1c0-8fb3-11ee-a2ad-0abb5ddc74d7",
+      "AmplifyAppId": "d1m9hxliynp3m2"
+    }
+  }
+}
