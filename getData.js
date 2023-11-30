@@ -1,64 +1,69 @@
-		function generateRandomString(length) {
-  			let text = '';
-  			let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+import { withAuthenticator, Connect } from 'aws-amplify-react'
+import Amplify, { graphqlOperation } from 'aws-amplify'
+import awsConfig from './aws-exports.js'
 
-  			for (let i = 0; i < length; i++) {
-    			text += possible.charAt(Math.floor(Math.random() * possible.length));
-  			}
-  			return text;
-		}
+Amplify.configure(awsConfig)
+
+
+function generateRandomString(length) {
+  	let text = '';
+  	let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  	for (let i = 0; i < length; i++) {
+    	text += possible.charAt(Math.floor(Math.random() * possible.length));
+  	}
+  	return text;
+}
 		
-		async function generateCodeChallenge(codeVerifier) {
-			function base64encode(string) {
-    			return btoa(String.fromCharCode.apply(null, new Uint8Array(string)))
-      			.replace(/\+/g, '-')
-      			.replace(/\//g, '_')
-      			.replace(/=+$/, '');
-  			}
+async function generateCodeChallenge(codeVerifier) {
+	function base64encode(string) {
+    	return btoa(String.fromCharCode.apply(null, new Uint8Array(string)))
+      	.replace(/\+/g, '-')
+      	.replace(/\//g, '_')
+      	.replace(/=+$/, '');
+  	}
 
-  		const encoder = new TextEncoder();
-  		const data = encoder.encode(codeVerifier);
-  		const digest = await window.crypto.subtle.digest('SHA-256', data);
+const encoder = new TextEncoder();
+const data = encoder.encode(codeVerifier);
+const digest = await window.crypto.subtle.digest('SHA-256', data);
 
-  		return base64encode(digest);
-		}
+return base64encode(digest);
+}
 		
-		function requestAuthentication() {
+function requestAuthentication() {
 	
-			let codeVerifier = generateRandomString(128);
+	let codeVerifier = generateRandomString(128);
 
-			generateCodeChallenge(codeVerifier).then(codeChallenge => {
-				let state = generateRandomString(16);
-				let scope = 'user-read-private user-read-email user-top-read';
+	generateCodeChallenge(codeVerifier).then(codeChallenge => {
+		let state = generateRandomString(16);
+		let scope = 'user-read-private user-read-email user-top-read';
 
-				localStorage.setItem('code_verifier', codeVerifier);
+		localStorage.setItem('code_verifier', codeVerifier);
 
-				let args = new URLSearchParams({
-					response_type: 'code',
-					client_id: clientId,
-					scope: scope,
-					redirect_uri: redirectUri, 
-					state: state,
-					code_challenge_method: 'S256',
-					code_challenge: codeChallenge
-				});
+		let args = new URLSearchParams({
+			response_type: 'code',
+			client_id: clientId,
+			scope: scope,
+			redirect_uri: redirectUri, 
+			state: state,
+			code_challenge_method: 'S256',
+			code_challenge: codeChallenge
+		});
 
-				window.location = 'https://accounts.spotify.com/authorize?' + args;
-			});
+		window.location = 'https://accounts.spotify.com/authorize?' + args;
+	});
             
-			requestToken();
-		}
+	requestToken();
+}
 
 const clientId = '850b3d0b9dba47c689f25160b90f1448'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
 const redirectUri = 'http://127.0.0.1:5500/EchoEcho-main/EchoEcho/homepage.html';
 
-		function requestToken() {
-		//parse URL and save code parameter to request access token
-		const urlParams = new URLSearchParams(window.location.search);
-		let code = urlParams.get('code');
-
-		let codeVerifier = localStorage.getItem('code_verifier');
-
+function requestToken() {
+//parse URL and save code parameter to request access token
+	const urlParams = new URLSearchParams(window.location.search);
+	let code = urlParams.get('code');
+	let codeVerifier = localStorage.getItem('code_verifier');
 		let body = new URLSearchParams({
 		grant_type: 'authorization_code',
 		code: code,
@@ -162,7 +167,7 @@ async function getTopArtists() {
 	await fetchTopArtists();
   }
 
-  //version similar to getTopArtists in getData.js
+//version similar to getTopArtists in getData.js
 async function getTopTracks() {
 	//fetch access token
 	let accessToken = localStorage.getItem('access_token');
@@ -208,7 +213,7 @@ if (localStorage.getItem('access_token') != null) {
 
 
 //********************************getGenre ********************************/
-//function rturns artists based on saved artists on the potify account
+//function rturns artists based on saved artists on the spotify account
 //recursively calls itself after an artist is received using spotify's callback url
 //returned as a promise
 function getArtistsFromSavedTracks(url, setOfArtists) {
@@ -231,6 +236,7 @@ function getArtistsFromSavedTracks(url, setOfArtists) {
     }
   });
 }
+
 //After artists are collected from getArtistsFromSavedTracks this function will take some and compares
 //how often genres among them are referenced returning these values into a list
 function getArtistGenreFromArtists(artistBatch) {
@@ -246,6 +252,7 @@ function getArtistGenreFromArtists(artistBatch) {
     return genreList;
   });
 }
+
 //this function allows for the adding of those referenced genres to a list where they will get a value that corresponds
 //to how often they show up
 function addToGenreList(genre, genreList) {
