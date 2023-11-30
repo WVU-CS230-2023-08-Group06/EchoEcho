@@ -1,9 +1,12 @@
-import { withAuthenticator, Connect } from 'aws-amplify-react'
-import Amplify, { graphqlOperation } from 'aws-amplify'
-import awsConfig from './aws-exports.js'
+import { Amplify, API, Auth, Storage } from 'aws-amplify';
+const awsExports = require('@/aws-exports').default;
 
+Amplify.register(API)
+Amplify.register(Storage)
+Amplify.register(Auth)
+/* Register the services before configure */
+Amplify.configure(awsExports)
 Amplify.configure(awsConfig)
-
 
 function generateRandomString(length) {
   	let text = '';
