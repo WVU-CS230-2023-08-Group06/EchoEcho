@@ -1,12 +1,12 @@
-import { Amplify, API, Auth, Storage } from 'aws-amplify';
+/*import { Amplify, API, Auth, Storage } from 'aws-amplify';
 const awsExports = require('@/aws-exports').default;
 
 Amplify.register(API)
 Amplify.register(Storage)
 Amplify.register(Auth)
 /* Register the services before configure */
-Amplify.configure(awsExports)
-Amplify.configure(awsConfig)
+/*Amplify.configure(awsExports)
+Amplify.configure(awsConfig)*/
 
 function generateRandomString(length) {
   	let text = '';
