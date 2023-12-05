@@ -1,12 +1,12 @@
-import { Amplify, API, Auth, Storage } from 'aws-amplify';
+/*import { Amplify, API, Auth, Storage } from 'aws-amplify';
 const awsExports = require('@/aws-exports').default;
 
 Amplify.register(API)
 Amplify.register(Storage)
 Amplify.register(Auth)
 /* Register the services before configure */
-Amplify.configure(awsExports)
-Amplify.configure(awsConfig)
+/*Amplify.configure(awsExports)
+Amplify.configure(awsConfig)*/
 
 function generateRandomString(length) {
   	let text = '';
@@ -60,7 +60,7 @@ function requestAuthentication() {
 }
 
 const clientId = '850b3d0b9dba47c689f25160b90f1448'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
-const redirectUri = 'http://127.0.0.1:5500/homepage.html';
+const redirectUri = 'https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html';
 
 function requestToken() {
 //parse URL and save code parameter to request access token
