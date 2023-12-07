@@ -357,7 +357,7 @@ then(function(genreList) {
   return flattenedGenreList;
 });
 
-if (localStorage.getItem('access_token') !== NULL) {
+if (localStorage.getItem('access_token') !== null) {
 	console.log("hit")
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
 }
