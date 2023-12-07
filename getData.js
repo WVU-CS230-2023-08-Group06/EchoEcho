@@ -278,6 +278,7 @@ then(function(genreList) {
 function onPageLoad() {
 	if (localStorage.getItem('code_verifier') !== null) {
 		requestToken();
+		location.reload();
 	}
 
 	if (localStorage.getItem('access_token') !== null) {
