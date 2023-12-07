@@ -2,6 +2,7 @@
 
 
 function displayArtists() {
+	console.log(localStorage.getItem('access_token'))
 	//get the array of top artists
 	var topArtistsString = localStorage.getItem('top_artists');
 	//Ensure that the array exists
@@ -39,6 +40,8 @@ function displayArtists() {
 		});
 	}
 }
+
+
 
 //Ensure the webpage has loaded before attempting to display
 document.addEventListener('DOMContentLoaded', function () {
