@@ -357,10 +357,7 @@ then(function(genreList) {
   return flattenedGenreList;
 });
 
-document.addEventListener('load', function () {
-	console.log(localStorage.getItem('access_token'))
-	if (localStorage.getItem('access_token') !== NULL) {
-		console.log("hit")
-		window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
-	}
-});
+if (localStorage.getItem('access_token') !== NULL) {
+	console.log("hit")
+	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
+}
