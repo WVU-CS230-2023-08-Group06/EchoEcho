@@ -357,7 +357,7 @@ then(function(genreList) {
   return flattenedGenreList;
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('load', function () {
 	console.log(localStorage.getItem('access_token'))
 	if (localStorage.getItem('access_token') != NULL) {
 		console.log("hit")
