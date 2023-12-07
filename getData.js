@@ -59,7 +59,7 @@ function requestAuthentication() {
 	requestToken();
 }
 
-const clientId = '317a259b67c140f683de7e260b8c079a'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
+const clientId = '7820cb5ed08b4ad490fcad0e33712d6e'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
 const redirectUri = 'https://main.d3ontvtqcgyr6j.amplifyapp.com/';
 
 function requestToken() {
