@@ -154,7 +154,7 @@ if (localStorage.getItem('access_token') !== null) {
 	getTopTracks();
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('load', function () {
 	displayArtists();
 	displayTracks();
 });

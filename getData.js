@@ -55,8 +55,7 @@ function requestAuthentication() {
 
 		window.location = 'https://accounts.spotify.com/authorize?' + args;
 	});
-            
-	requestToken();
+
 }
 
 const clientId = '7820cb5ed08b4ad490fcad0e33712d6e'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
@@ -132,13 +131,6 @@ const getRefreshToken = async () => {
 	const data = await response.json();
 	console.log(data);
   	}
-		
-if (localStorage.getItem('access_token') !== null) {
-	requestToken();
-	getProfile();
-
-	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
-}
 
 let top5Songs = topTracks.slice(0, 5);
 let top5Artists = topArtists.slice(0, 5);
@@ -283,3 +275,24 @@ then(function(genreList) {
   return flattenedGenreList;
 });
 
+if (localStorage.getItem('code_verifier') !== null) {
+	requestToken();
+}
+
+if (localStorage.getItem('access_token') !== null) {
+	requestToken();
+	getProfile();
+
+	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
+}
+
+const refreshInterval = setInterval(function() {
+	location.reload();
+  }, 5000);
+  
+  // Stop refreshing after 30 seconds (30000 milliseconds)
+  setTimeout(function() {
+	clearInterval(refreshInterval);
+	console.log('Intermittent refresh stopped');
+  }, 30000);
+  
