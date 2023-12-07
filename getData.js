@@ -275,13 +275,15 @@ then(function(genreList) {
   return flattenedGenreList;
 });
 
-if (localStorage.getItem('code_verifier') !== null) {
-	requestToken();
-}
+document.addEventListener('DOMContentLoaded', function() {
+	if (localStorage.getItem('code_verifier') !== null) {
+		requestToken();
+	}
 
-if (localStorage.getItem('access_token') !== null) {
-	requestToken();
-	getProfile();
+	if (localStorage.getItem('access_token') !== null) {
+		requestToken();
+		getProfile();
 
-	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
-}
+		window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
+	}
+});
