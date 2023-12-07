@@ -54,8 +54,9 @@ function requestAuthentication() {
 		});
 
 		window.location = 'https://accounts.spotify.com/authorize?' + args;
-	});
 
+		requestToken();
+	});
 }
 
 const clientId = '7820cb5ed08b4ad490fcad0e33712d6e'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
@@ -278,8 +279,7 @@ then(function(genreList) {
 function onPageLoad() {
 
 	if ((localStorage.getItem('code_verifier') !== null) && (localStorage.getItem('access_token') === null)) {
-		requestToken();
-		//location.reload();
+		
 	}
 
 	if (localStorage.getItem('access_token') !== null) {
