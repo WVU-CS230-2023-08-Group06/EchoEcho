@@ -207,11 +207,12 @@ async function getTopTracks() {
 	await fetchTopTracks();
   }
 		
-if (localStorage.getItem('access_token') != null) {
+if (localStorage.getItem('access_token') !== null) {
 	requestToken();
 	getProfile();
 	getTopArtists();
 	getTopTracks();
+	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
 }
 
 let top5Songs = topTracks.slice(0, 5);
@@ -357,7 +358,3 @@ then(function(genreList) {
   return flattenedGenreList;
 });
 
-if (localStorage.getItem('access_token') !== null) {
-	console.log("hit")
-	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
-}
