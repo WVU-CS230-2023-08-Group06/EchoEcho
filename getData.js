@@ -285,14 +285,3 @@ if (localStorage.getItem('access_token') !== null) {
 
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
 }
-
-const refreshInterval = setInterval(function() {
-	location.reload();
-  }, 5000);
-  
-  // Stop refreshing after 30 seconds (30000 milliseconds)
-  setTimeout(function() {
-	clearInterval(refreshInterval);
-	console.log('Intermittent refresh stopped');
-  }, 30000);
-  
