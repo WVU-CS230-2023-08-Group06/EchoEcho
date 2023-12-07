@@ -15,7 +15,11 @@ body {
 header {
     background-color: rgb(183, 39, 183); /* Change header background color to purple */
     color: pink; /* Change header text color to pink */
-    padding: 0;
+    padding: 0 0 20px;
+}
+
+p{
+    color: pink; /* Change the paragraph text to pink*/
 }
 
 #sticky {
@@ -111,4 +115,28 @@ header {
     background-color: orchid;
     color: white;
   }
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 75%; /* Set the width as needed */
+    height: 10px; /* Set the height as needed */
+    border-radius:8px; /* Adjust the border-radius for rounded corners */
+    background-color: #ddd; /* Set background color */
+  }
   
+  /* Customize the slider track and thumb appearance */
+  input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px; /* Adjust the height of the track */
+    background: #b609a5; /* Set track color */
+    border-radius: 5px;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; /* Adjust the width of the thumb */
+    height: 20px; /* Adjust the height of the thumb */
+    background: #fffffffa; /* Set thumb color */
+    border-radius: 50%; /* Make the thumb round */
+    border: 2px solid #e7e7e7; /* Add border to the thumb */
+    cursor: pointer;
+  }
