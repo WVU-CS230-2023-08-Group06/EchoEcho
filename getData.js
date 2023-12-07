@@ -275,7 +275,7 @@ then(function(genreList) {
   return flattenedGenreList;
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+function onPageLoad() {
 	if (localStorage.getItem('code_verifier') !== null) {
 		requestToken();
 	}
@@ -286,4 +286,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
 	}
-});
+}
