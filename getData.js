@@ -315,3 +315,9 @@ then(function(genreList) {
   }, {});
   return flattenedGenreList;
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+	if (localStorage.getItem('access_token') != NULL) {
+		window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
+	}
+});
