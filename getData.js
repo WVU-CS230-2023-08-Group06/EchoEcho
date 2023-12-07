@@ -60,7 +60,7 @@ function requestAuthentication() {
 }
 
 const clientId = '850b3d0b9dba47c689f25160b90f1448'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
-const redirectUri = 'https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html';
+const redirectUri = 'https://main.d3ontvtqcgyr6j.amplifyapp.com/';
 
 function requestToken() {
 //parse URL and save code parameter to request access token
