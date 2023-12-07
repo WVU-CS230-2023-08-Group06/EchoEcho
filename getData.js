@@ -282,7 +282,7 @@ function onPageLoad() {
 		window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
 	}
 
-	if (localStorage.getItem('code_verifier') !== null) {
+	if (localStorage.getItem('code_verifier') !== null &&& localStorage.getItem('access_token') === null) {
 		requestToken();
 		location.reload();
 	}
