@@ -276,15 +276,18 @@ then(function(genreList) {
 });
 
 function onPageLoad() {
+
+	if ((localStorage.getItem('code_verifier')) !== null && (localStorage.getItem('access_token') === null)) {
+		requestToken();
+		//location.reload();
+	} else {
+		requestAuthentication()
+	}
+
 	if (localStorage.getItem('access_token') !== null) {
 		getProfile();
 
 		window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
-	}
-
-	if ((localStorage.getItem('code_verifier')) !== null && (localStorage.getItem('access_token') === null)) {
-		requestToken();
-		location.reload();
 	}
 
 }
