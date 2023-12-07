@@ -54,8 +54,6 @@ function requestAuthentication() {
 		});
 
 		window.location = 'https://accounts.spotify.com/authorize?' + args;
-
-		requestToken();
 	});
 }
 
@@ -90,6 +88,7 @@ function requestToken() {
   	})
   	.then(data => {
     	localStorage.setItem('access_token', data.access_token);
+		getProfile();
   	})
   	.catch(error => {
     	console.error('Error:', error);
@@ -131,6 +130,7 @@ const getRefreshToken = async () => {
   
 	const data = await response.json();
 	console.log(data);
+	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
   	}
 
 let top5Songs = topTracks.slice(0, 5);
@@ -278,14 +278,11 @@ then(function(genreList) {
 
 function onPageLoad() {
 
-	if ((localStorage.getItem('code_verifier') !== null) && (localStorage.getItem('access_token') === null)) {
-		
+	const queryParams = new URLSearchParams(window.location.search);
+	if (queryParams.has('code')) {
+		requestToken();
 	}
 
-	if (localStorage.getItem('access_token') !== null) {
-		getProfile();
-
-		window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
-	}
+	
 
 }
