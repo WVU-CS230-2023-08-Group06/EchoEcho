@@ -277,11 +277,9 @@ then(function(genreList) {
 
 function onPageLoad() {
 
-	if ((localStorage.getItem('code_verifier')) !== null && (localStorage.getItem('access_token') === null)) {
+	if ((localStorage.getItem('code_verifier') !== null) && (localStorage.getItem('access_token') === null)) {
 		requestToken();
 		//location.reload();
-	} else {
-		requestAuthentication()
 	}
 
 	if (localStorage.getItem('access_token') !== null) {
