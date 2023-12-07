@@ -1,80 +1,5 @@
 // JavaScript Document
 
-// Function to get the user's top artists
-async function getTopArtists() {
-	//fetch access token
-	let accessToken = localStorage.getItem('access_token');
-  
-	// Initialize an empty array to store all top artists
-	let allArtists = [];
-  
-	//Request data from api
-	async function fetchTopArtists(offset = 0) {
-	  const response = await fetch(`https://api.spotify.com/v1/me/top/artists?limit=50&offset=${offset}`, {
-		headers: {
-		  Authorization: 'Bearer ' + accessToken,
-		},
-	  });
-  
-	  //Store recieved data in JSON format
-	  const data = await response.json();
-	  if (data.items && data.items.length > 0) {
-		allArtists = allArtists.concat(data.items);
-		//Check for pagination and fetch the next page if available
-		if (data.next) {
-		  const nextOffset = new URL(data.next).searchParams.get('offset');
-		  await fetchTopArtists(nextOffset);
-		} else {
-			//Store as a JSON string in local storage when there are no objects left
-			localStorage.setItem('top_artists', JSON.stringify(allArtists));
-			let topdbug = localStorage.getItem('top_artists')
-		  	console.log(allArtists); // All top artists retrieved
-			
-		}
-	  }
-	}
-  
-	await fetchTopArtists();
-  }
-
-//version similar to getTopArtists in getData.js
-async function getTopTracks() {
-	//fetch access token
-	let accessToken = localStorage.getItem('access_token');
-  
-	//Initialize an empty array to store all top tracks
-	let allTracks = [];
-  
-	//Request data from api
-	async function fetchTopTracks(offset = 0) {
-	  const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?limit=20&offset=${offset}`, {
-		headers: {
-		  Authorization: 'Bearer ' + accessToken,
-		},
-	  });
-  
-	  //Store recieved data in JSON format
-	  const data = await response.json();
-	  if (data.items && data.items.length > 0) {
-		allTracks = allTracks.concat(data.items);
-		//Check for pagination and fetch the next page if available
-		if (data.next) {
-		  const nextOffset = new URL(data.next).searchParams.get('offset');
-		  await fetchTopTracks(nextOffset);
-		} else {
-			//Store as a JSON string in local storage when there are no objects left
-			localStorage.setItem('top_tracks', JSON.stringify(allTracks));
-			let topdbug = localStorage.getItem('top_tracks')
-		  	console.log(allTracks); // All top tracks retrieved
-			
-		}
-	  }
-	}
-  
-	await fetchTopTracks();
-  }
-
-
 function displayArtists() {
 	console.log(localStorage.getItem('access_token'))
 	//get the array of top artists
@@ -147,11 +72,6 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 			trackList.appendChild(listItem);
 		});
 	}
-}
-
-if (localStorage.getItem('access_token') !== null) {
-	getTopArtists();
-	getTopTracks();
 }
 
 document.addEventListener('load', function () {
