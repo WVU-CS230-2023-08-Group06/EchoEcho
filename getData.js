@@ -60,7 +60,7 @@ function requestAuthentication() {
 }
 
 const clientId = '850b3d0b9dba47c689f25160b90f1448'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
-const redirectUri = 'https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html?code=AQDTdcpy2R020uTy70qin8xDZMxwRoxvpgcKqPZ8bJYW915lghAqJiaeMX_lpYWRyukrYl6SHdP9RswF397HvJgtw6OIJGEf6FNGE-I_jCDZkQ1VZPF9j2UuOmEu5w6wnT1BcpUOKe2srxT2h6fY_LvfTR7Re4VUOyt_o70KTEO5RV-e_Z755p5rK2eyWfHEOEitopqc3Gd8yRwteCaZarTzHImci7CTwtEBjhNki0aTUME9NImW0bxWa-7ysXcr0u0BlToQGQyMiqn_F5CPwQfcXl7I0SRbu1kpW0thyQVc-QKD4KOI0e9wYBWSfwJWmqS5AdYBnicXSWTRxPE_ZbZ1&state=ZDe68Iv0qb78VR3v';
+const redirectUri = 'https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html';
 
 function requestToken() {
 //parse URL and save code parameter to request access token
