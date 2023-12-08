@@ -119,7 +119,7 @@ const getRefreshToken = async () => {
 	 localStorage.setItem('refresh_token', response.refreshToken);
    }
 
-   async function getProfile() {
+async function getProfile() {
 	let accessToken = localStorage.getItem('access_token');
   
 	const response = await fetch('https://api.spotify.com/v1/me', {
@@ -130,8 +130,11 @@ const getRefreshToken = async () => {
   
 	const data = await response.json();
 	console.log(data);
-	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
-  	}
+	
+	await getProfile().then(() => {
+		window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
+	});
+}
 
 let top5Songs = topTracks.slice(0, 5);
 let top5Artists = topArtists.slice(0, 5);
