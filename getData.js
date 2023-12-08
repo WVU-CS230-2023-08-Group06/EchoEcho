@@ -131,9 +131,7 @@ async function getProfile() {
 	const data = await response.json();
 	console.log(data);
 	
-	await getProfile().then(() => {
-		window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
-	});
+	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
 }
 
 let top5Songs = topTracks.slice(0, 5);
