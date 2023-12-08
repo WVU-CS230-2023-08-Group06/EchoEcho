@@ -89,8 +89,6 @@ function requestToken() {
   	.then(data => {
     	localStorage.setItem('access_token', data.access_token);
 		getTopArtists();
-		getTopTracks();
-		getProfile();
   	})
   	.catch(error => {
     	console.error('Error:', error);
@@ -210,7 +208,9 @@ async function getTopArtists() {
 	  }
 	}
   
-	await fetchTopArtists();
+	await fetchTopArtists().then(() => {
+		getTopTracks();
+	});
   }
 
 //version similar to getTopArtists in getData.js
@@ -247,7 +247,9 @@ async function getTopTracks() {
 	  }
 	}
   
-	await fetchTopTracks();
+	await fetchTopTracks().then(() => {
+		getProfile();
+	});
   }
 
 
