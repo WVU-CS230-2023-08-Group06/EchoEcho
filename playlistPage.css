@@ -1,0 +1,101 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-color: pink; /* Change background color to pink */
+    color: rgb(183, 39, 183); /* Change text color to purple */
+    margin: 0;
+    padding: 0;
+    background-attachment: fixed;
+}
+
+header {
+    background-color: rgb(183, 39, 183); /* Change header background color to purple */
+    color: pink; /* Change header text color to pink */
+    padding: 0;
+}
+#sticky {
+    position:fixed;
+    top:0;
+}
+.playlistDisplay {
+    background-color: rgb(183, 39, 183); /* Change background color of the welcome message to purple */
+    color: rgb(12, 12, 12); /* Change text color of the welcome message to pink */
+    
+    border-radius: 10px;
+    display: inline-block;
+    margin: 100px 0;
+    text-align: center;
+	width: 50%;
+    height: 500px;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+.genreList {
+    margin-bottom:10px;
+    border:1px solid #000;
+    border-radius:10px;
+}
+
+.genreList:hover {
+    background-color:#000;
+    color:white;
+}
+
+.genreLinks {
+    color:white;
+    display:block;
+    padding:30px;
+    border-radius:10px;
+    text-decoration: none;
+    /*width:100%;
+    height:100%;*/
+}
+
+.genreLinks:hover {
+    background-color:magenta;
+    color:black;
+}
+
+
+#returnButton {
+    padding: 15px 20px;
+    font-size: 20px;
+    background-color: pink; /* Change button background color to pink */
+    color: purple; /* Change button text color to purple */
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#returnButton:hover {
+    background-color: magenta;
+    color:white;
+}
+
+.navBar {
+    background-color: purple;
+    overflow: hidden;
+  }
+  
+  .navBar a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navBar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .navBar a.active {
+    background-color: orchid;
+    color: white;
+  }
