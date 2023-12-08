@@ -74,7 +74,7 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 	}
 }
 
-document.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', function () {
 	displayArtists();
 	displayTracks();
 });
