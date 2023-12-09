@@ -134,9 +134,6 @@ async function getProfile() {
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
 }
 
-let top5Songs = topTracks.slice(0, 5);
-let top5Artists = topArtists.slice(0, 5);
-
 async function getSpotifyRecommendations(authToken, topSongs, topArtists) {
     try {
         // Spotify API endpoint for getting recommendations
@@ -190,6 +187,12 @@ async function getTopArtists() {
 		  Authorization: 'Bearer ' + accessToken,
 		},
 	  });
+
+	  if (!response.ok) {
+		const errorData = await response.json();
+		console.error('Error:', errorData);
+		// Handle the error as needed
+	  }
   
 	  //Store recieved data in JSON format
 	  const data = await response.json();
