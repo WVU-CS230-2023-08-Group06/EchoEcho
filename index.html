@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="welcomecss.css">
+    <!--Loading button stylesheet from Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <script src="getData.js"></script>
     <title>EchoEcho</title>
     
@@ -15,7 +18,10 @@
     <div id="welcome-message">
         <h1>Welcome!</h1>
         <h2>A place for all of your favorite songs, all the time.</h2>
-        <input type="button" onClick="requestAuthentication()" class="loginButton" value="Login With Spotify" />    
+        <input type="button" onClick="requestAuthentication()" class="loginButton" id="login" value="Login With Spotify" />  
+        <div id="loadingSpinner">
+            <i class="fas fa-spinner fa-spin"></i> <!-- Font Awesome spinner -->
+        </div>  
     </div>
     
 </body>

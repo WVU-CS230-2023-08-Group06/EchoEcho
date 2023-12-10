@@ -187,12 +187,6 @@ async function getTopArtists() {
 		  Authorization: 'Bearer ' + accessToken,
 		},
 	  });
-
-	  if (!response.ok) {
-		const errorData = await response.json();
-		console.error('Error:', errorData);
-		// Handle the error as needed
-	  }
   
 	  //Store recieved data in JSON format
 	  const data = await response.json();
@@ -359,10 +353,16 @@ then(function(genreList) {
   return flattenedGenreList;
 });
 
-function onPageLoad() {
+function showLoadingSpinner() {
+	document.getElementById("loadingSpinner").style.display = "block";
+}
 
+function onPageLoad() {
+	var loginBtn = document.getElementById("login");
 	const queryParams = new URLSearchParams(window.location.search);
 	if (queryParams.has('code')) {
+		loginBtn.style.display = "none";
+		showLoadingSpinner();
 		requestToken();
 	}
 
