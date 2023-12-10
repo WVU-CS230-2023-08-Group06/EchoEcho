@@ -79,8 +79,10 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 	}
 }
 
+
+drawTopLists(topTracks, topArtists);
 // Function to draw the top 5 lists on the canvas
-function drawTopLists() {
+function drawTopLists(topTracks, topArtists) {
 
 	let fiveTracks = topTracks.slice(0, 5);
 	let fiveArtists = topArtists.slice(0, 5);
