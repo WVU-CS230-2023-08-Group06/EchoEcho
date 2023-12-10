@@ -362,7 +362,7 @@ function onPageLoad() {
 	var welcomePrompt = document.getElementById("welcomePrompt");
 	const queryParams = new URLSearchParams(window.location.search);
 	if (queryParams.has('code')) {
-		loginBtn.textContent = "Just a moment...";
+		welcomePrompt.textContent = "Just a moment...";
 		loginBtn.style.display = "none";
 		showLoadingSpinner();
 		requestToken();
