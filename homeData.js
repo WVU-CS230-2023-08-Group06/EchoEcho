@@ -14,7 +14,7 @@ function displayArtists() {
 	//Ensure that the array exists
 	if (topArtistsString !== null && typeof topArtistsString === "string") {
 		console.log(topArtistsString); //for debugging
-		topArtists = JSON.parse(topArtistsString);   // deserializing here
+		var topArtists = JSON.parse(topArtistsString);   // deserializing here
 		console.log("Succesfully retrieved 'tasks' and contents.");
 	}
 	
