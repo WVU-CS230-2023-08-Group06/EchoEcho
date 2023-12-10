@@ -1,6 +1,5 @@
 // JavaScript Document
 
-//let 
 
 function logout() {
 	localStorage.clear();
@@ -53,7 +52,7 @@ function displayTracks() {
 	var topTracksString = localStorage.getItem('top_tracks');
 if (topTracksString !== null && typeof topTracksString === "string") {
     console.log(topTracksString);
-	topArtists = JSON.parse(topArtistsString);   // deserializing here
+	var topTracks = JSON.parse(topArtistsString);   // deserializing here
     console.log("Succesfully retrieved 'tasks' and contents.");
 }
 	
