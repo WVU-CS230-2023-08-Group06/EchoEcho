@@ -102,7 +102,7 @@ function drawTopLists() {
     let y2 = 50;
 
     // Draw list 1
-    ctx.fillStyle = 'blue';
+    ctx.fillStyle = 'Purple';
     ctx.font = '16px Arial';
     ctx.fillText('Top 5 Artists', x1, y1 - 10);
     for (let i = 0; i < fiveArtists.length; i++) {
@@ -110,11 +110,11 @@ function drawTopLists() {
     }
 
     // Draw list 2
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = 'Purple';
     ctx.font = '16px Arial';
     ctx.fillText('Top 5 Tracks', x2, y2 - 10);
     for (let i = 0; i < fiveTracks.length; i++) {
-        ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, x2, y2 + i * 20);
+        ctx.fillText(`${i + 1}. ${fiveTracks[i]}`, x2, y2 + i * 20);
     }
 
     // Create a popup with the canvas image
