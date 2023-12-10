@@ -12,7 +12,7 @@ function displayArtists() {
 	//Ensure that the array exists
 	if (topArtistsString !== null && typeof topArtistsString === "string") {
 		console.log(topArtistsString); //for debugging
-		var topArtists = JSON.parse(topArtistsString);   // deserializing here
+		const topArtists = JSON.parse(topArtistsString);   // deserializing here
 		console.log("Succesfully retrieved 'tasks' and contents.");
 	}
 	
@@ -51,7 +51,7 @@ function displayTracks() {
 	var topTracksString = localStorage.getItem('top_tracks');
 if (topTracksString !== null && typeof topTracksString === "string") {
     console.log(topTracksString);
-	var topTracks = JSON.parse(topTracksString);   // deserializing here
+	const topTracks = JSON.parse(topTracksString);   // deserializing here
     console.log("Succesfully retrieved 'tasks' and contents.");
 }
 	
