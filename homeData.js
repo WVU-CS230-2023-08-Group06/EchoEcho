@@ -1,5 +1,10 @@
 // JavaScript Document
 
+function logout() {
+	localStorage.clear();
+	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com";
+}
+
 function displayArtists() {
 	console.log(localStorage.getItem('access_token'))
 	//get the array of top artists
