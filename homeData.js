@@ -52,7 +52,7 @@ function displayTracks() {
 	var topTracksString = localStorage.getItem('top_tracks');
 if (topTracksString !== null && typeof topTracksString === "string") {
     console.log(topTracksString);
-	var topTracks = JSON.parse(topArtistsString);   // deserializing here
+	var topTracks = JSON.parse(topTracksString);   // deserializing here
     console.log("Succesfully retrieved 'tasks' and contents.");
 }
 	
@@ -82,6 +82,9 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 
 // Function to draw the top 5 lists on the canvas
 function drawTopLists() {
+
+	var topArtistsString = localStorage.getItem('top_artists');
+	var topTracksString = localStorage.getItem('top_tracks');
 
 	topArtists = JSON.parse(topArtistsString);
 	topTracks = JSON.parse(topTracksString); 
