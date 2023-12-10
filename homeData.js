@@ -1,5 +1,7 @@
 // JavaScript Document
 
+let fiveArtists = [];
+let fiveTracks = [];
 
 function logout() {
 	localStorage.clear();
@@ -41,6 +43,7 @@ function displayArtists() {
 			//listItem.appendChild(genre);
 			listItem.appendChild(artistLink);
 			console.log(artist.name);
+			fiveArtists.push(artist.name);
 			artistList.appendChild(listItem);
 		});
 	}
@@ -72,9 +75,9 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 			trackLink.className = 'trackLinks';
 			
 			listItem.appendChild(trackPicture);
-			//listItem.appendChild(genre);
 			listItem.appendChild(trackLink);
 			console.log(track.name);
+			fiveTracks.push(track.name);
 			trackList.appendChild(listItem);
 		});
 	}
@@ -82,15 +85,6 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 
 // Function to draw the top 5 lists on the canvas
 function drawTopLists() {
-
-	var topArtistsString = localStorage.getItem('top_artists');
-	var topTracksString = localStorage.getItem('top_tracks');
-
-	topArtists = JSON.parse(topArtistsString);
-	topTracks = JSON.parse(topTracksString); 
-
-	let fiveTracks = topTracks.slice(0, 5);
-	let fiveArtists = topArtists.slice(0, 5);
 
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
