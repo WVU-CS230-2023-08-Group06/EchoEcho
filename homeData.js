@@ -79,7 +79,49 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 	}
 }
 
+const fiveTracks = topTracks.slice(0, 5);
+const fiveArtists = topArtists.slice(0, 5);
+
+// Function to draw the top 5 lists on the canvas
+function drawTopLists() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas dimensions
+    canvas.width = 400;
+    canvas.height = 300;
+
+    // Define the position to start drawing the first list
+    let x1 = 50;
+    let y1 = 50;
+
+    // Define the position to start drawing the second list
+    let x2 = 250;
+    let y2 = 50;
+
+    // Draw list 1
+    ctx.fillStyle = 'blue';
+    ctx.font = '16px Arial';
+    ctx.fillText('Top 5 Artists', x1, y1 - 10);
+    for (let i = 0; i < fiveArtists.length; i++) {
+        ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, x1, y1 + i * 20);
+    }
+
+    // Draw list 2
+    ctx.fillStyle = 'green';
+    ctx.font = '16px Arial';
+    ctx.fillText('Top 5 Tracks', x2, y2 - 10);
+    for (let i = 0; i < fiveTracks.length; i++) {
+        ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, x2, y2 + i * 20);
+    }
+
+    // Create a popup with the canvas image
+    const popup = window.open('', 'Top 5 Lists', 'width=400,height=300');
+    popup.document.body.appendChild(canvas);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 	displayArtists();
 	displayTracks();
 });
+
