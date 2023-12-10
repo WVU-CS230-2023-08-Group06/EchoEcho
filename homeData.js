@@ -1,7 +1,6 @@
 // JavaScript Document
 
-var topArtists;
-var topTracks;
+//let 
 
 function logout() {
 	localStorage.clear();
@@ -54,7 +53,7 @@ function displayTracks() {
 	var topTracksString = localStorage.getItem('top_tracks');
 if (topTracksString !== null && typeof topTracksString === "string") {
     console.log(topTracksString);
-	topTracks = JSON.parse(topTracksString);   // deserializing here
+	topArtists = JSON.parse(topArtistsString);   // deserializing here
     console.log("Succesfully retrieved 'tasks' and contents.");
 }
 	
@@ -82,10 +81,11 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 	}
 }
 
-
-drawTopLists(topTracks, topArtists);
 // Function to draw the top 5 lists on the canvas
-function drawTopLists(topTracks, topArtists) {
+function drawTopLists() {
+
+	topArtists = JSON.parse(topArtistsString);
+	topTracks = JSON.parse(topTracksString); 
 
 	let fiveTracks = topTracks.slice(0, 5);
 	let fiveArtists = topArtists.slice(0, 5);
