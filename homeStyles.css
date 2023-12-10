@@ -23,7 +23,7 @@ header {
     padding: 20px;
 }
 
-#sticky {
+.stickyHeader {
     position:fixed;
     top:0;
 }
