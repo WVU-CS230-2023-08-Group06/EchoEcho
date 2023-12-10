@@ -12,7 +12,7 @@ function displayArtists() {
 	//Ensure that the array exists
 	if (topArtistsString !== null && typeof topArtistsString === "string") {
 		console.log(topArtistsString); //for debugging
-		const topArtists = JSON.parse(topArtistsString);   // deserializing here
+		var topArtists = JSON.parse(topArtistsString);   // deserializing here
 		console.log("Succesfully retrieved 'tasks' and contents.");
 	}
 	
@@ -51,7 +51,7 @@ function displayTracks() {
 	var topTracksString = localStorage.getItem('top_tracks');
 if (topTracksString !== null && typeof topTracksString === "string") {
     console.log(topTracksString);
-	const topTracks = JSON.parse(topTracksString);   // deserializing here
+	var topTracks = JSON.parse(topTracksString);   // deserializing here
     console.log("Succesfully retrieved 'tasks' and contents.");
 }
 	
@@ -82,8 +82,8 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 // Function to draw the top 5 lists on the canvas
 function drawTopLists() {
 
-	const fiveTracks = topTracks.slice(0, 5);
-	const fiveArtists = topArtists.slice(0, 5);
+	let fiveTracks = topTracks.slice(0, 5);
+	let fiveArtists = topArtists.slice(0, 5);
 
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
