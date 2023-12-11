@@ -21,7 +21,7 @@ header {
     position:fixed;
     top:0;
 }
-.playlistDisplay {
+.recommendations {
     background-color: rgb(183, 39, 183); /* Change background color of the welcome message to purple */
     color: rgb(12, 12, 12); /* Change text color of the welcome message to pink */
     
@@ -34,18 +34,18 @@ header {
 	overflow-x: auto;
 	overflow-y: auto;
 }
-.genreList {
+.recommendationsList {
     margin-bottom:10px;
     border:1px solid #000;
     border-radius:10px;
 }
 
-.genreList:hover {
+.recommendationsList:hover {
     background-color:#000;
     color:white;
 }
 
-.genreLinks {
+.recommendationsLinks {
     color:white;
     display:block;
     padding:30px;
@@ -55,7 +55,7 @@ header {
     height:100%;*/
 }
 
-.genreLinks:hover {
+.recommendationsLinks:hover {
     background-color:magenta;
     color:black;
 }
