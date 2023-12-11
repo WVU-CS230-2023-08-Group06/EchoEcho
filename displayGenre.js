@@ -14,7 +14,7 @@ function displayGenres() {
             listItem.className = 'genreList';
 
             console.log(track.name);
-			trackList.appendChild(listItem);
+	trackList.appendChild(listItem);
         })
     }
 
