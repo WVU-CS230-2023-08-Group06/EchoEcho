@@ -13,7 +13,7 @@ function displayGenres() {
             var listItem = document.createElement('li');
             listItem.className = 'genreList';
 
-            console.log(track.name);
+            console.log(genre.name);
 	trackList.appendChild(listItem);
         })
     }
