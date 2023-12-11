@@ -18,9 +18,11 @@ function displayArtists() {
 	var genreList = document.getElementById('genreList');
 	if (topArtists) {
 		topArtists.forEach(function(artist) { //for each JSON object in the array of artists
-			//Create the list element
+			//Create the list element for the genre
 			var listItem = document.createElement('li');
 			listItem.className = 'genreList';
+			console.log(artist.genre)
+			genreList.appendChild(listItem);
         })
     }
 }
