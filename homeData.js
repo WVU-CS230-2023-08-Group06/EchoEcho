@@ -85,40 +85,37 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 
 // Function to draw the top 5 lists on the canvas
 function drawTopLists() {
-
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    
-    // Set canvas dimensions
-    canvas.width = 400;
-    canvas.height = 300;
 
-    // Define the position to start drawing the first list
-    let x1 = 50;
-    let y1 = 50;
+    canvas.width = 500;
+    canvas.height = 500;
 
-    // Define the position to start drawing the second list
-    let x2 = 250;
-    let y2 = 50;
+    var background = new Image();
+    background.src = "/sharingBackground.png";
 
-    // Draw list 1
-    ctx.fillStyle = 'Purple';
-    ctx.font = '16px Arial';
-    ctx.fillText('Top 5 Artists', x1, y1 - 10);
-    for (let i = 0; i < fiveArtists.length; i++) {
-        ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, x1, y1 + i * 20);
-    }
+    background.onload = function() {
+        ctx.drawImage(background, 0, 0);
 
-    // Draw list 2
-    ctx.fillStyle = 'Purple';
-    ctx.font = '16px Arial';
-    ctx.fillText('Top 5 Tracks', x2, y2 - 10);
-    for (let i = 0; i < fiveTracks.length; i++) {
-        ctx.fillText(`${i + 1}. ${fiveTracks[i]}`, x2, y2 + i * 20);
+        // Draw list 1
+        ctx.fillStyle = 'White';
+        ctx.font = '20px Arial';
+        ctx.fillText('Top 5 Artists', 50, 40);
+        for (let i = 0; i < fiveArtists.length; i++) {
+            ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, 50, 80 + i * 30);
+        }
+
+        // Draw list 2
+        ctx.fillStyle = 'White';
+        ctx.font = '20x Arial';
+        ctx.fillText('Top 5 Tracks', 260, 40);
+        for (let i = 0; i < fiveTracks.length; i++) {
+            ctx.fillText(`${i + 1}. ${fiveTracks[i]}`, 260, 80 + i * 30);
+        }
     }
 
     // Create a popup with the canvas image
-    const popup = window.open('', 'Top 5 Lists', 'width=400,height=300');
+    const popup = window.open('', 'Top 5 Lists', 'width=500,height=500');
     popup.document.body.appendChild(canvas);
 }
 
