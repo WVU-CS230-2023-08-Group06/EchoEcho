@@ -100,14 +100,14 @@ function drawTopLists() {
         // Draw list 1
         ctx.fillStyle = 'White';
         ctx.font = '20px Arial';
-        ctx.fillText('Top 5 Artists', 50, 20);
+        ctx.fillText('Top 5 Artists', 50, 40);
         for (let i = 0; i < fiveArtists.length; i++) {
             ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, 50, 50 + i * 20);
         }
 
         // Draw list 2
-        ctx.fillStyle = 'Purple';
-        ctx.font = '16px Arial';
+        ctx.fillStyle = 'White';
+        ctx.font = '20x Arial';
         ctx.fillText('Top 5 Tracks', 300, 40);
         for (let i = 0; i < fiveTracks.length; i++) {
             ctx.fillText(`${i + 1}. ${fiveTracks[i]}`, 300, 50 + i * 20);
