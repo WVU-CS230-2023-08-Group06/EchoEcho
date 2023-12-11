@@ -34,18 +34,18 @@ header {
 	overflow-x: auto;
 	overflow-y: auto;
 }
-.recommendationList {
+.recommendationsList {
     margin-bottom:10px;
     border:1px solid #000;
     border-radius:10px;
 }
 
-.recommendationList:hover {
+.recommendationsList:hover {
     background-color:#000;
     color:white;
 }
 
-.genreLinks {
+.recommendationsLinks {
     color:white;
     display:block;
     padding:30px;
@@ -55,7 +55,7 @@ header {
     height:100%;*/
 }
 
-.genreLinks:hover {
+.recommendationsLinks:hover {
     background-color:magenta;
     color:black;
 }
