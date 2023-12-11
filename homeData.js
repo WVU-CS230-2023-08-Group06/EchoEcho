@@ -88,23 +88,32 @@ function drawTopLists() {
 
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
+
+	var background = new Image();
+	background.src = "/sharingBackground.png";
+
+// Make sure the image is loaded first otherwise nothing will draw.
+	background.onload = function(){
+    ctx.drawImage(background,0,0);   
+} 
+
     
     // Set canvas dimensions
-    canvas.width = 400;
-    canvas.height = 300;
+    canvas.width = 1080;
+    canvas.height = 1080;
 
     // Define the position to start drawing the first list
-    let x1 = 50;
-    let y1 = 50;
+    let x1 = 100;
+    let y1 = 100;
 
     // Define the position to start drawing the second list
-    let x2 = 250;
-    let y2 = 50;
+    let x2 = 600;
+    let y2 = 100;
 
     // Draw list 1
-    ctx.fillStyle = 'Purple';
-    ctx.font = '16px Arial';
-    ctx.fillText('Top 5 Artists', x1, y1 - 10);
+    ctx.fillStyle = 'White';
+    ctx.font = '30px Arial';
+    ctx.fillText('Top 5 Artists', x1, y1 - 30);
     for (let i = 0; i < fiveArtists.length; i++) {
         ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, x1, y1 + i * 20);
     }
