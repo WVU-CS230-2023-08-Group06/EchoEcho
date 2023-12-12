@@ -235,6 +235,7 @@ async function getProfile() {
   
 	const data = await response.json();
 	console.log(data);
+	localStorage.setItem("user_profile", data);
 	//This is the last function in the authorization sequence
 	//Sends the user to homepage to view their data
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
