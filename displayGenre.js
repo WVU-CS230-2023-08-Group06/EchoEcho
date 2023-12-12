@@ -3,7 +3,7 @@ function logout() {
 	localStorage.clear();
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com";
 }
-function displayArtists() {
+function displayGenre() {
 	const authToken = localStorage.getItem('auth_token');
 	//get the array of top artists
 	var topArtistsString = localStorage.getItem('top_artists');
