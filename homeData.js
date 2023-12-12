@@ -128,10 +128,10 @@ function drawTopLists() {
     twitterLink.href = 'https://twitter.com/intent/tweet?text=Check%20this%20amazing%20website%20out!&url=https://main.d3ontvtqcgyr6j.amplifyapp.com/';
     twitterLink.target = '_blank';
     const twitterImg = popup.document.createElement('img');
-    twitterImg.src = 'twitterX.png';
+    twitterImg.src = '*/twitterX.png';
     twitterImg.alt = 'Share on Twitter';
     twitterLink.appendChild(twitterImg);
-    popup.document.footer.appendChild(twitterLink);
+    popup.document.body.appendChild(twitterLink);
 
     // Add Facebook share link
     const facebookLink = popup.document.createElement('a');
@@ -140,7 +140,7 @@ function drawTopLists() {
     facebookImg.src = 'facebookIcon.png'; 
     facebookImg.alt = 'Share on Facebook';
     facebookLink.appendChild(facebookImg);
-    popup.document.footer.appendChild(facebookLink);
+    popup.document.body.appendChild(facebookLink);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
