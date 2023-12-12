@@ -18,5 +18,5 @@ function displayGenre() {
 // Assuming you have an HTML button with id "displayButton" to trigger the display
 document.addEventListener('DOMContentLoaded', function () {
 	getGenres();
-	displayTracks();
+	displayGenre();
 });
