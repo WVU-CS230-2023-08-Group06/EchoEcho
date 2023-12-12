@@ -17,6 +17,6 @@ function displayGenre() {
 // You should call displayGenre after the data is ready to be displayed
 // Assuming you have an HTML button with id "displayButton" to trigger the display
 document.addEventListener('DOMContentLoaded', function () {
-	getGenres();
+	console.log(getGenres());
 	displayGenre();
 });
