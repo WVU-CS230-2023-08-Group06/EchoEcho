@@ -17,51 +17,14 @@
 			<button type="button" id="logoutBtn" onclick="logout()">Logout</button>
         </div>
 		<h1>Your Top Tracks</h1>
-		<a href="homepage.html">
-			<button id="returnButton">Back to Homepage</button>
-		</a>
 	</div>
 	
 	</header>
 	
 	<div class="trackDisplay">
 		<header id="sticky"></header>
-		
 		<ol id="trackList"></ol>
-	<p>
-		<label for="timeRange">Selected Time Frame: <span id="selectedTimeFrame"></span></label>
-		<div>
-		<input type="range" id="timeRange" min="0" max="14" step="1" value="0" oninput="updateTimeFrame()">
-		</p>
-	
   </div>
-	
-	<script>
-	  const timeFrames = ['one_week', 'two_weeks', 'three_weeks', 'one_month', 'two_months', 'three_months','four_months','five_months','six_months','seven_months','eight_months','nine_months','ten_months','eleven_months','one_year'];
-	  const timeFrameLabels = ['One Week', 'Two Weeks', 'Three Weeks','One Month', 'Two Months','Three Months','Four Months', 'Five Months', 'Six Months','Seven Months', 'Eight Months', 'Nine Months', 'Ten Months', 'Eleven Months', 'One Year']; 
-	  document.addEventListener('DOMContentLoaded', () => {
-      const timeRange = document.getElementById('timeRange');
-
-      timeRange.addEventListener('input', () => {
-		updateTimeFrameLabel();
-        updateTimeFrame();
-      });
-    });
-
-    function updateTimeFrame() {
-      const selectedTimeFrameIndex = parseInt(document.getElementById('timeRange').value);
-      const selectedTimeFrame = timeFrames[selectedTimeFrameIndex];
-
-      // Perform actions based on the selected time frame (e.g., fetch top tracks)
-      // You can call your existing function to fetch top tracks here with the selectedTimeFrame parameter
-      // Example: getTopTracks(selectedTimeFrame);
-    }
-	function updateTimeFrameLabel() {
-      const selectedTimeFrameIndex = parseInt(document.getElementById('timeRange').value);
-      const selectedTimeFrameLabel = timeFrameLabels[selectedTimeFrameIndex];
-      document.getElementById('selectedTimeFrame').innerText = selectedTimeFrameLabel;
-    }
-  </script>
 
 <footer>
 

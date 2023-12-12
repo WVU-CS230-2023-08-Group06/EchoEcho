@@ -4,9 +4,17 @@ function logout() {
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com";
 }
 
-function displayArtists() {
+function displayArtists(time_range) {
 	//get the array of top artists
-	var topArtistsString = localStorage.getItem('top_artists');
+	if (time_range === 'long_term') {
+		var topArtistsString = localStorage.getItem('top_artists');
+	} else if (time_range === 'medium_term') {
+		var topArtistsString = localStorage.getItem('top_artists_6mo');
+	} else {
+		var topArtistsString = localStorage.getItem('top_artists_4wk');
+	}
+	
+	
 	//Ensure that the array exists
 	if (topArtistsString !== null && typeof topArtistsString === "string") {
 		console.log(topArtistsString); //for debugging
@@ -16,6 +24,10 @@ function displayArtists() {
 	
 	//get the list element from topArtistsPage
 	var artistList = document.getElementById('artistList');
+
+	// Clear existing list content
+	artistList.innerHTML = '';
+	
 	if (topArtists) {
 		topArtists.forEach(function(artist) { //for each JSON object in the array of artists
 			//Create the list element
@@ -43,7 +55,33 @@ function displayArtists() {
 	}
 }
 
-//Ensure the webpage has loaded before attempting to display
 document.addEventListener('DOMContentLoaded', function () {
-	displayArtists();
-});
+	// Add event listener to the radio buttons
+	const radioButtons = document.querySelectorAll('input[name="tabs"]');
+	radioButtons.forEach(function (radioButton) {
+	  radioButton.addEventListener('change', function () {
+		// Call the onPageLoad function with the selected time range
+		onPageLoad(this.id.replace('radio-', ''));
+	  });
+	});
+  
+	// Default call to onPageLoad
+	onPageLoad('long');
+  });
+  
+  function onPageLoad(timeRange) {
+	const contentContainer = document.getElementById('content-container');
+	switch (timeRange) {
+	  case 'long':
+		displayArtists('long_term');
+		break;
+	  case 'med':
+		displayArtists('medium_term');
+		break;
+	  case 'short':
+		displayArtists('short_term');
+		break;
+	  default:
+		break;
+	}
+  }
