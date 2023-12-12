@@ -4,9 +4,17 @@ function logout() {
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com";
 }
 
-function displayArtists() {
+function displayArtists(time_range) {
 	//get the array of top artists
-	var topArtistsString = localStorage.getItem('top_artists');
+	if (time_range === 'long_term') {
+		var topArtistsString = localStorage.getItem('top_artists');
+	} else if (time_range === 'medium_term') {
+		var topArtistsString = localStorage.getItem('top_artists_6mo');
+	} else {
+		var topArtistsString = localStorage.getItem('top_artists_4wk');
+	}
+	
+	
 	//Ensure that the array exists
 	if (topArtistsString !== null && typeof topArtistsString === "string") {
 		console.log(topArtistsString); //for debugging
@@ -45,5 +53,5 @@ function displayArtists() {
 
 //Ensure the webpage has loaded before attempting to display
 document.addEventListener('DOMContentLoaded', function () {
-	displayArtists();
+	displayArtists('long_term');
 });

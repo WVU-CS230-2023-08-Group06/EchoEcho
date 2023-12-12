@@ -4,14 +4,21 @@ function logout() {
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com";
 }
 
-function displayTracks() {
+function displayTracks(time_range) {
+	if (time_range === 'long_term') {
+		var topTracksString = localStorage.getItem('top_tracks');
+	} else if (time_range === 'medium_term') {
+		var topTracksString = localStorage.getItem('top_tracks_6mo');
+	} else {
+		var topTracksString = localStorage.getItem('top_tracks_4wk');
+	}
+
 	
-	var topTracksString = localStorage.getItem('top_tracks');
-if (topTracksString !== null && typeof topTracksString === "string") {
-    console.log(topTracksString);
-	var topTracks = JSON.parse(topTracksString);   // deserializing here
-    console.log("Succesfully retrieved 'tasks' and contents.");
-}
+	if (topTracksString !== null && typeof topTracksString === "string") {
+		console.log(topTracksString);
+		var topTracks = JSON.parse(topTracksString);   // deserializing here
+		console.log("Succesfully retrieved 'tasks' and contents.");
+	}
 	
 	var trackList = document.getElementById('trackList');
 	if (topTracks) {
@@ -38,5 +45,5 @@ if (topTracksString !== null && typeof topTracksString === "string") {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	displayTracks();
+	displayTracks('long_term');
 });
