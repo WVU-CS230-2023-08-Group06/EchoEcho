@@ -135,16 +135,16 @@ function getGenres() {
     topArtists.forEach(function(artist) {
         var genres = artist.genres;
         for (i in genres) {
-            for (j in genreArray) {
+            var found = false;
+            for (var j in genreArray) {
                 if (genres[i] === genreArray[j][0]) {
                     genreArray[j][1]++;
+                    found = true;
                     break;
                 }
-                if (j === genreArray.length - 1) {
-                    genreArray[j+1][0] = genres[i];
-                    genreArray[j+1][1]++;
-                    break;
-                }
+            }
+            if (!found) {
+                genreArray.push([genres[i], 1]);
             }
 
         }
