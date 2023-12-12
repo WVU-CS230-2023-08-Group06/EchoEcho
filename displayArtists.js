@@ -51,7 +51,33 @@ function displayArtists(time_range) {
 	}
 }
 
-//Ensure the webpage has loaded before attempting to display
 document.addEventListener('DOMContentLoaded', function () {
-	displayArtists('long_term');
-});
+	// Add event listener to the radio buttons
+	const radioButtons = document.querySelectorAll('input[name="tabs"]');
+	radioButtons.forEach(function (radioButton) {
+	  radioButton.addEventListener('change', function () {
+		// Call the onPageLoad function with the selected time range
+		onPageLoad(this.id.replace('radio-', ''));
+	  });
+	});
+  
+	// Default call to onPageLoad
+	onPageLoad('long');
+  });
+  
+  function onPageLoad(timeRange) {
+	const contentContainer = document.getElementById('content-container');
+	switch (timeRange) {
+	  case 'long':
+		displayArtists('long_term');
+		break;
+	  case 'med':
+		displayArtists('medium_term');
+		break;
+	  case 'short':
+		displayArtists('short_term');
+		break;
+	  default:
+		break;
+	}
+  }
