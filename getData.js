@@ -189,9 +189,9 @@ async function getTopTracks(time_range) {
 			if (time_range === 'long_term') {
 				localStorage.setItem('top_tracks', JSON.stringify(allTracks));
 			} else if (time_range === 'medium_term') {
-				localStorage.setItem('top_tracks', JSON.stringify(allTracks));
+				localStorage.setItem('top_tracks_6mo', JSON.stringify(allTracks));
 			} else {
-				localStorage.setItem('top_tracks', JSON.stringify(allTracks));
+				localStorage.setItem('top_tracks_4wk', JSON.stringify(allTracks));
 			}
 			
 		  	console.log(allTracks); // All top tracks retrieved
