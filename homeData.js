@@ -122,5 +122,29 @@ function drawTopLists() {
 document.addEventListener('DOMContentLoaded', function () {
 	displayArtists();
 	displayTracks();
+	getGenres();
 });
+
+
+function getGenres() {
+    var topArtists = localStorage.getItem('top_artists');
+    topArtists.array.forEach(artist => {
+        var genres = artist.genres;
+        for (i in genres) {
+            for (j in genreArray) {
+                if (genres[i] === genreArray[j][0]) {
+                    genreArray[j][1]++;
+                    break;
+                }
+                if (j === genreArray.length - 1) {
+                    genreArray[j+1][0] = genres[i];
+                    genreArray[j+1][1]++;
+                    break;
+                }
+            }
+
+        }
+    });
+    console.log(genreArray);
+}
 
