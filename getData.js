@@ -99,7 +99,7 @@ function requestToken() {
   	.then(data => {
 		//If the request was sucessful, store the token and start getting data
     	localStorage.setItem('access_token', data.access_token);
-		getTopArtists();
+		getTopArtists('long_term');
   	})
   	.catch(error => {
     	console.error('Error:', error);
@@ -155,7 +155,7 @@ async function getTopArtists(time_range) {
 			getTopArtists('short_term');
 		} else {
 			//get the user's top tracks after fetching artists
-			getTopTracks();
+			getTopTracks('long_term');
 		}
 	});
   }
