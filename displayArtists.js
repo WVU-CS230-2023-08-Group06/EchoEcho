@@ -24,6 +24,10 @@ function displayArtists(time_range) {
 	
 	//get the list element from topArtistsPage
 	var artistList = document.getElementById('artistList');
+
+	// Clear existing list content
+	artistList.innerHTML = '';
+	
 	if (topArtists) {
 		topArtists.forEach(function(artist) { //for each JSON object in the array of artists
 			//Create the list element
