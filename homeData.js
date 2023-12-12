@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function getGenres() {
     var topArtists = localStorage.getItem('top_artists');
-    topArtists.forEach(artist => {
+    topArtists.forEach(function(artist) {
         var genres = artist.genres;
         for (i in genres) {
             for (j in genreArray) {
