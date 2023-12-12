@@ -106,62 +106,6 @@ function requestToken() {
   	});
 }
 
-/**Fetches the user's profile from the api */
-async function getProfile() {
-	let accessToken = localStorage.getItem('access_token');
-	
-	//Make the api request
-	const response = await fetch('https://api.spotify.com/v1/me', {
-	  headers: {
-		Authorization: 'Bearer ' + accessToken
-	  }
-	});
-  
-	const data = await response.json();
-	console.log(data);
-	//This is the last function in the authorization sequence
-	//Sends the user to homepage to view their data
-	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
-}
-
-async function getSpotifyRecommendations(authToken, topSongs, topArtists) {
-    try {
-        // Spotify API endpoint for getting recommendations
-        const endpoint = 'https://api.spotify.com/v1/recommendations';
-
-        // Constructing query parameters
-        // Note: The Spotify API may require specific parameter formatting or additional parameters
-        const queryParams = new URLSearchParams({
-            seed_tracks: topSongs.join(','), // Assuming topSongs is an array of track IDs
-            seed_artists: topArtists.join(','), // Assuming topArtists is an array of artist IDs
-        });
-
-        // Making the API request
-        const response = await fetch(`${endpoint}?${queryParams}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${authToken}`,
-                'Content-Type': 'application/json'
-            }
-        });
-
-        // Checking if the response is successful
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-        }
-
-        // Parsing the response body as JSON
-        const data = await response.json();
-
-        // Return the recommendations from the response
-        // The structure of 'data' depends on Spotify's response format
-        return data.tracks; // This is an example, adjust based on actual response structure
-    } catch (error) {
-        console.error('Error fetching Spotify recommendations:', error);
-        return [];
-    }
-}
-
 /**Gets the user's top artists */
 async function getTopArtists() {
 	//fetch access token
@@ -237,7 +181,64 @@ async function getTopTracks() {
 		//get the user's profile after fetching tracks
 		getProfile();
 	});
-  }
+}
+
+/**Gets the user's spotify recommended songs from the api */
+async function getSpotifyRecommendations(authToken, topSongs, topArtists) {
+    try {
+        // Spotify API endpoint for getting recommendations
+        const endpoint = 'https://api.spotify.com/v1/recommendations';
+
+        // Constructing query parameters
+        // Note: The Spotify API may require specific parameter formatting or additional parameters
+        const queryParams = new URLSearchParams({
+            seed_tracks: topSongs.join(','), // Assuming topSongs is an array of track IDs
+            seed_artists: topArtists.join(','), // Assuming topArtists is an array of artist IDs
+        });
+
+        // Making the API request
+        const response = await fetch(`${endpoint}?${queryParams}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        // Checking if the response is successful
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
+
+        // Parsing the response body as JSON
+        const data = await response.json();
+
+        // Return the recommendations from the response
+        // The structure of 'data' depends on Spotify's response format
+        return data.tracks; // This is an example, adjust based on actual response structure
+    } catch (error) {
+        console.error('Error fetching Spotify recommendations:', error);
+        return [];
+    }
+}
+  
+/**Fetches the user's profile from the api */
+async function getProfile() {
+	let accessToken = localStorage.getItem('access_token');
+	
+	//Make the api request
+	const response = await fetch('https://api.spotify.com/v1/me', {
+	  headers: {
+		Authorization: 'Bearer ' + accessToken
+	  }
+	});
+  
+	const data = await response.json();
+	console.log(data);
+	//This is the last function in the authorization sequence
+	//Sends the user to homepage to view their data
+	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
+}
 
   /**Shows the loading spinner on the welcome page */
 function showLoadingSpinner() {
