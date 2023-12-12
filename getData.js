@@ -106,8 +106,10 @@ function requestToken() {
   	});
 }
 
-/**Gets the user's top artists */
-async function getTopArtists() {
+/**Gets the user's top artists over the time range specified
+ * @param {string} time_range - short_term, medium_term, or long_term
+*/
+async function getTopArtists(time_range) {
 	//fetch access token
 	let accessToken = localStorage.getItem('access_token');
   
@@ -116,7 +118,7 @@ async function getTopArtists() {
   
 	//Request data from api
 	async function fetchTopArtists(offset = 0) {
-	  const response = await fetch(`https://api.spotify.com/v1/me/top/artists?limit=50&offset=${offset}`, {
+	  const response = await fetch(`https://api.spotify.com/v1/me/top/artists?time_range=${time_range}&limit=50&offset=${offset}`, {
 		headers: {
 		  Authorization: 'Bearer ' + accessToken,
 		},
@@ -132,20 +134,34 @@ async function getTopArtists() {
 		  await fetchTopArtists(nextOffset);
 		} else {
 			//Store as a JSON string in local storage when there are no objects left
-			localStorage.setItem('top_artists', JSON.stringify(allArtists));
+			if (time_range === 'long_term') {
+				localStorage.setItem('top_artists', JSON.stringify(allArtists));
+			} else if (time_range === 'medium_term') {
+				localStorage.setItem('top_artists_6mo', JSON.stringify(allArtists));
+			} else {
+				localStorage.setItem('top_artists_4wk', JSON.stringify(allArtists));
+			}
+	
 		  	console.log(allArtists); // All top artists retrieved
 		}
 	  }
 	}
   
 	await fetchTopArtists().then(() => {
-		//get the user's top tracks after fetching artists
-		getTopTracks();
+		//get artists for each time range
+		if (time_range === 'long_term') {
+			getTopArtists('medium_term');
+		} else if (time_range === 'medium_term') {
+			getTopArtists('short_term');
+		} else {
+			//get the user's top tracks after fetching artists
+			getTopTracks();
+		}
 	});
   }
 
 /**Gets the user's top tracks */
-async function getTopTracks() {
+async function getTopTracks(time_range) {
 	//fetch access token
 	let accessToken = localStorage.getItem('access_token');
   
@@ -154,7 +170,7 @@ async function getTopTracks() {
   
 	//Request data from api
 	async function fetchTopTracks(offset = 0) {
-	  const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?limit=20&offset=${offset}`, {
+	  const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${time_range}&limit=20&offset=${offset}`, {
 		headers: {
 		  Authorization: 'Bearer ' + accessToken,
 		},
@@ -170,7 +186,14 @@ async function getTopTracks() {
 		  await fetchTopTracks(nextOffset);
 		} else {
 			//Store as a JSON string in local storage when there are no objects left
-			localStorage.setItem('top_tracks', JSON.stringify(allTracks));
+			if (time_range === 'long_term') {
+				localStorage.setItem('top_tracks', JSON.stringify(allTracks));
+			} else if (time_range === 'medium_term') {
+				localStorage.setItem('top_tracks', JSON.stringify(allTracks));
+			} else {
+				localStorage.setItem('top_tracks', JSON.stringify(allTracks));
+			}
+			
 		  	console.log(allTracks); // All top tracks retrieved
 			
 		}
@@ -178,8 +201,15 @@ async function getTopTracks() {
 	}
   
 	await fetchTopTracks().then(() => {
-		//get the user's profile after fetching tracks
-		getProfile();
+		//get tracks for each time range
+		if (time_range === 'long_term') {
+			getTopTracks('medium_term');
+		} else if (time_range === 'medium_term') {
+			getTopTracks('short_term');
+		} else {
+			//get the user's profile after fetching tracks
+			getProfile();
+		}
 	});
 }
 
