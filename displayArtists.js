@@ -27,7 +27,7 @@ function displayArtists(time_range) {
 
 	// Clear existing list content
 	artistList.innerHTML = '';
-	
+
 	if (topArtists) {
 		topArtists.forEach(function(artist) { //for each JSON object in the array of artists
 			//Create the list element
@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   function onPageLoad(timeRange) {
-	const contentContainer = document.getElementById('content-container');
 	switch (timeRange) {
 	  case 'long':
 		displayArtists('long_term');

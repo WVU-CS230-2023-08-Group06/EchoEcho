@@ -115,31 +115,6 @@ p{
     background-color: orchid;
     color: white;
   }
-  input[type="range"] {
-    -webkit-appearance: none;
-    width: 75%; /* Set the width as needed */
-    height: 10px; /* Set the height as needed */
-    border-radius:8px; /* Adjust the border-radius for rounded corners */
-    background-color: #ddd; /* Set background color */
-  }
-  
-  /* Customize the slider track and thumb appearance */
-  input[type="range"]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 8px; /* Adjust the height of the track */
-    background: #b609a5; /* Set track color */
-    border-radius: 5px;
-  }
-  
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px; /* Adjust the width of the thumb */
-    height: 20px; /* Adjust the height of the thumb */
-    background: #fffffffa; /* Set thumb color */
-    border-radius: 50%; /* Make the thumb round */
-    border: 2px solid #e7e7e7; /* Add border to the thumb */
-    cursor: pointer;
-  }
 
   #logoutBtn {
     position: absolute;
@@ -156,4 +131,79 @@ p{
   #logoutBtn:hover {
     background-color: orchid;
     color: white;
+  }
+
+  *, *:after, *:before {
+    box-sizing: border-box;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tabs {
+    display: flex;
+    position: relative;
+    background-color: orchid;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+    padding: 0.75rem;
+    border-radius: 99px;
+  }
+
+  .tabs *{
+    z-index: 2;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  .tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    width: 200px;
+    font-size: 1.25rem;
+    font-weight: 400;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.15s ease-in;
+  }
+
+  input[type="radio"]:checked + label{
+    color:white;
+  }
+
+  input[id="radio-long"]:checked ~ .glider{
+    transform: translateX(0);
+  }
+
+  input[id="radio-med"]:checked ~ .glider{
+    transform: translateX(100%);
+  }
+
+  input[id="radio-short"]:checked ~ .glider{
+    transform: translateX(200%);
+  }
+
+  .glider {
+    position: absolute;
+    display: flex;
+    height: 54px;
+    width: 200px;
+    background-color: #f907fc;
+    background-image: linear-gradient(315deg, #f907fc 0%, #05d6d9 74%);
+    color: white;
+    z-index: 1;
+    border-radius: 99px;
+    transition: 0.25s ease-out;
+  }
+
+  @media (max-width: 700px) {
+    .tabs {
+        transform: scale(0.6);
+    }
   }

@@ -21,6 +21,9 @@ function displayTracks(time_range) {
 	}
 	
 	var trackList = document.getElementById('trackList');
+
+	trackList.innerHTML = '';
+
 	if (topTracks) {
 		topTracks.forEach(function(track) {
 			var listItem = document.createElement('li');
@@ -45,5 +48,31 @@ function displayTracks(time_range) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	displayTracks('long_term');
-});
+	// Add event listener to the radio buttons
+	const radioButtons = document.querySelectorAll('input[name="tabs"]');
+	radioButtons.forEach(function (radioButton) {
+	  radioButton.addEventListener('change', function () {
+		// Call the onPageLoad function with the selected time range
+		onPageLoad(this.id.replace('radio-', ''));
+	  });
+	});
+  
+	// Default call to onPageLoad
+	onPageLoad('long');
+  });
+  
+  function onPageLoad(timeRange) {
+	switch (timeRange) {
+	  case 'long':
+		displayTracks('long_term');
+		break;
+	  case 'med':
+		displayTracks('medium_term');
+		break;
+	  case 'short':
+		displayTracks('short_term');
+		break;
+	  default:
+		break;
+	}
+  }

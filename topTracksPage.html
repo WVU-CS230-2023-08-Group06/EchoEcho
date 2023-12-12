@@ -17,9 +17,22 @@
 			<button type="button" id="logoutBtn" onclick="logout()">Logout</button>
         </div>
 		<h1>Your Top Tracks</h1>
-	</div>
-	
 	</header>
+
+	<div class="container">
+		<div class="tabs">
+			<input type="radio" id="radio-long" name="tabs" checked />
+			<label class="tab" for="radio-long">All Time</label>
+
+			<input type="radio" id="radio-med" name="tabs"/>
+			<label class="tab" for="radio-med">6 Months</label>
+
+			<input type="radio" id="radio-short" name="tabs"/>
+			<label class="tab" for="radio-short">1 Month</label>
+
+			<span class="glider"></span>
+		</div>
+	</div>
 	
 	<div class="trackDisplay">
 		<header id="sticky"></header>
