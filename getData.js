@@ -1,13 +1,12 @@
-/*import { Amplify, API, Auth, Storage } from 'aws-amplify';
-const awsExports = require('@/aws-exports').default;
+const clientId = '7820cb5ed08b4ad490fcad0e33712d6e'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
+const redirectUri = 'https://main.d3ontvtqcgyr6j.amplifyapp.com/';
 
-Amplify.register(API)
-Amplify.register(Storage)
-Amplify.register(Auth)
-/* Register the services before configure */
-/*Amplify.configure(awsExports)
-Amplify.configure(awsConfig)*/
 
+/**Generates a random string for the code challenge code verifier
+ * 
+ * @param {int} length - decides the length of the random string
+ * @returns a random string
+ */
 function generateRandomString(length) {
   	let text = '';
   	let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -17,7 +16,13 @@ function generateRandomString(length) {
   	}
   	return text;
 }
-		
+
+/**Hashes the code verifier generated to send
+ *  as part of the auth request
+ * 
+ * @param {string} codeVerifier - a random string
+ * @returns the hashed code verifier
+ */
 async function generateCodeChallenge(codeVerifier) {
 	function base64encode(string) {
     	return btoa(String.fromCharCode.apply(null, new Uint8Array(string)))
@@ -25,41 +30,44 @@ async function generateCodeChallenge(codeVerifier) {
       	.replace(/\//g, '_')
       	.replace(/=+$/, '');
   	}
+	//Uses SHA-256 to hash codeVerifier
+	const encoder = new TextEncoder();
+	const data = encoder.encode(codeVerifier);
+	const digest = await window.crypto.subtle.digest('SHA-256', data);
 
-const encoder = new TextEncoder();
-const data = encoder.encode(codeVerifier);
-const digest = await window.crypto.subtle.digest('SHA-256', data);
-
-return base64encode(digest);
+	return base64encode(digest);
 }
-		
+
+/**Initiates the auth request via a redirect to spotify login*/
 function requestAuthentication() {
-	
+	//generate random string
 	let codeVerifier = generateRandomString(128);
 
+	//hash the string and pass it to the next body of code to send a request to the api
 	generateCodeChallenge(codeVerifier).then(codeChallenge => {
 		let state = generateRandomString(16);
+		//specifies permissions to be granted
 		let scope = 'user-read-private user-read-email user-top-read';
 
 		localStorage.setItem('code_verifier', codeVerifier);
 
+		//set up URL search params
 		let args = new URLSearchParams({
 			response_type: 'code',
 			client_id: clientId,
 			scope: scope,
+			//redirectUri is where the user will end up after auth
 			redirect_uri: redirectUri, 
 			state: state,
 			code_challenge_method: 'S256',
 			code_challenge: codeChallenge
 		});
-
+		//Go to spotify login with the above required data
 		window.location = 'https://accounts.spotify.com/authorize?' + args;
 	});
 }
 
-const clientId = '7820cb5ed08b4ad490fcad0e33712d6e'; //client id is provided by spotify for webapps, but a redirect uri is required to get it
-const redirectUri = 'https://main.d3ontvtqcgyr6j.amplifyapp.com/';
-
+/**Sends a POST request to the spotify token endpoint to get the user's access token*/
 function requestToken() {
 //parse URL and save code parameter to request access token
 	const urlParams = new URLSearchParams(window.location.search);
@@ -73,6 +81,7 @@ function requestToken() {
 		code_verifier: codeVerifier
 		});
 
+		//make the POST request
 		const response = fetch('https://accounts.spotify.com/api/token', {
   		method: 'POST',
   		headers: {
@@ -80,6 +89,7 @@ function requestToken() {
   		},
   		body: body
 	})
+	//Check return status and catch errors
  	 .then(response => {
     	if (!response.ok) {
     	  throw new Error('HTTP status ' + response.status);
@@ -87,6 +97,7 @@ function requestToken() {
     	return response.json();
   	})
   	.then(data => {
+		//If the request was sucessful, store the token and start getting data
     	localStorage.setItem('access_token', data.access_token);
 		getTopArtists();
   	})
@@ -95,33 +106,11 @@ function requestToken() {
   	});
 }
 
-const getRefreshToken = async () => {
-
-	// refresh token that has been previously stored
-	const refreshToken = localStorage.getItem('refresh_token');
-	const url = "https://accounts.spotify.com/api/token";
- 
-	 const payload = {
-	   method: 'POST',
-	   headers: {
-		 'Content-Type': 'application/x-www-form-urlencoded'
-	   },
-	   body: new URLSearchParams({
-		 grant_type: 'refresh_token',
-		 refresh_token: refreshToken,
-		 client_id: clientId
-	   }),
-	 }
-	 body = await fetch(url, payload);
-	 const response = await body.json();
- 
-	 localStorage.setItem('access_token', response.accessToken);
-	 localStorage.setItem('refresh_token', response.refreshToken);
-   }
-
+/**Fetches the user's profile from the api */
 async function getProfile() {
 	let accessToken = localStorage.getItem('access_token');
-  
+	
+	//Make the api request
 	const response = await fetch('https://api.spotify.com/v1/me', {
 	  headers: {
 		Authorization: 'Bearer ' + accessToken
@@ -130,7 +119,8 @@ async function getProfile() {
   
 	const data = await response.json();
 	console.log(data);
-	
+	//This is the last function in the authorization sequence
+	//Sends the user to homepage to view their data
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com/homepage.html"
 }
 
@@ -172,7 +162,7 @@ async function getSpotifyRecommendations(authToken, topSongs, topArtists) {
     }
 }
 
-// Function to get the user's top artists
+/**Gets the user's top artists */
 async function getTopArtists() {
 	//fetch access token
 	let accessToken = localStorage.getItem('access_token');
@@ -199,19 +189,18 @@ async function getTopArtists() {
 		} else {
 			//Store as a JSON string in local storage when there are no objects left
 			localStorage.setItem('top_artists', JSON.stringify(allArtists));
-			let topdbug = localStorage.getItem('top_artists')
 		  	console.log(allArtists); // All top artists retrieved
-			
 		}
 	  }
 	}
   
 	await fetchTopArtists().then(() => {
+		//get the user's top tracks after fetching artists
 		getTopTracks();
 	});
   }
 
-//version similar to getTopArtists in getData.js
+/**Gets the user's top tracks */
 async function getTopTracks() {
 	//fetch access token
 	let accessToken = localStorage.getItem('access_token');
@@ -238,7 +227,6 @@ async function getTopTracks() {
 		} else {
 			//Store as a JSON string in local storage when there are no objects left
 			localStorage.setItem('top_tracks', JSON.stringify(allTracks));
-			let topdbug = localStorage.getItem('top_tracks')
 		  	console.log(allTracks); // All top tracks retrieved
 			
 		}
@@ -246,71 +234,29 @@ async function getTopTracks() {
 	}
   
 	await fetchTopTracks().then(() => {
+		//get the user's profile after fetching tracks
 		getProfile();
 	});
   }
 
-
-
-//********************************getGenre ********************************/
-//function rturns artists based on saved artists on the spotify account
-//recursively calls itself after an artist is received using spotify's callback url
-//returned as a promise
-
-async function getToken() {
-  if (localStorage.getItem("sessionToken") == null) {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        Authorization: "Basic " + btoa(`${clientId}:${clientSecret}`),
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({ grant_type: "client_credentials" }),
-    });
-    const tokenResponse = await response.json();
-    localStorage.setItem("sessionToken", tokenResponse.access_token);
-  }
-}
-
+  /**Shows the loading spinner on the welcome page */
 function showLoadingSpinner() {
 	document.getElementById("loadingSpinner").style.display = "block";
 }
 
+/**Checks for an auth code after the page loads, then takes appropriate action */
 function onPageLoad() {
+	//Get elements to change the page if the user has authenticated
 	var loginBtn = document.getElementById("login");
 	var welcomePrompt = document.getElementById("welcomePrompt");
 	const queryParams = new URLSearchParams(window.location.search);
+	//If the URL has the authorization code from spotify authentication,
 	if (queryParams.has('code')) {
+		//Give the user something pretty to look at
 		welcomePrompt.textContent = "Just a moment...";
 		loginBtn.style.display = "none";
 		showLoadingSpinner();
+		//Begin the access token/data fetching process
 		requestToken();
 	}
-
-	
-
-}
-
-let genreArray = [];
-
-function getGenres() {
-    var topArtists = localStorage.getItem('top_artists');
-    topArtists.array.forEach(artist => {
-        var genres = artist.genres;
-        for (i in genres) {
-            for (j in genreArray) {
-                if (genres[i] === genreArray[j][0]) {
-                    genreArray[j][1]++;
-                    break;
-                }
-                if (j === genreArray.length - 1) {
-                    genreArray[j+1][0] = genres[i];
-                    genreArray[j+1][1]++;
-                    break;
-                }
-            }
-
-        }
-    });
-    console.log(genreArray);
 }
