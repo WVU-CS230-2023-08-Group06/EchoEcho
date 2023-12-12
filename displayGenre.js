@@ -4,6 +4,7 @@ function logout() {
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com";
 }
 function displayArtists() {
+	const authToken = localStorage.getItem('auth_token');
 	//get the array of top artists
 	var topArtistsString = localStorage.getItem('top_artists');
 	//Ensure that the array exists
@@ -15,14 +16,20 @@ function displayArtists() {
 
     
 	//get the list element from topArtistsPage
-	var genreList = document.getElementById('genreList');
+	var genreList = document.getElementById('genre');
 	if (topArtists) {
 		topArtists.forEach(function(artist) { //for each JSON object in the array of artists
 			//Create the list element for the genre
 			var listItem = document.createElement('li');
 			listItem.className = 'genreList';
+			const trackName = document.createElement('span');
+            genreName.textContent = genre.name;
+            genreName.className = 'genreName';
 			console.log(artist.genre)
 			genreList.appendChild(listItem);
         })
     }
+	document.addEventListener('DOMContentLoaded', function () {
+        displayGenres();
+    });
 }
