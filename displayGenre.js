@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Assuming element with id "genreChart"
     var ctx = document.getElementById('genreChart');
-
+    console.log(ctx);
     // Check if the canvas element is found before proceeding
     if (ctx) {
         // Create the pie chart
