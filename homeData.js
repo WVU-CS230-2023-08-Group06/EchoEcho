@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	displayArtists();
 	displayTracks();
 	getGenres();
+	displayTopGenres();
 });
 
 var genreArray = [];
