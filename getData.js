@@ -214,43 +214,43 @@ async function getTopTracks(time_range) {
 }
 
 /**Gets the user's spotify recommended songs from the api */
-async function getSpotifyRecommendations(authToken, topSongs, topArtists) {
-    try {
-        // Spotify API endpoint for getting recommendations
-        const endpoint = 'https://api.spotify.com/v1/recommendations';
+// async function getSpotifyRecommendations(authToken, topSongs, topArtists) {
+//     try {
+//         // Spotify API endpoint for getting recommendations
+//         const endpoint = 'https://api.spotify.com/v1/recommendations';
 
-        // Constructing query parameters
-        // Note: The Spotify API may require specific parameter formatting or additional parameters
-        const queryParams = new URLSearchParams({
-            seed_tracks: topSongs.join(','), // Assuming topSongs is an array of track IDs
-            seed_artists: topArtists.join(','), // Assuming topArtists is an array of artist IDs
-        });
+//         // Constructing query parameters
+//         // Note: The Spotify API may require specific parameter formatting or additional parameters
+//         const queryParams = new URLSearchParams({
+//             seed_tracks: topSongs.join(','), // Assuming topSongs is an array of track IDs
+//             seed_artists: topArtists.join(','), // Assuming topArtists is an array of artist IDs
+//         });
 
-        // Making the API request
-        const response = await fetch(`${endpoint}?${queryParams}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${authToken}`,
-                'Content-Type': 'application/json'
-            }
-        });
+//         // Making the API request
+//         const response = await fetch(`${endpoint}?${queryParams}`, {
+//             method: 'GET',
+//             headers: {
+//                 'Authorization': `Bearer ${authToken}`,
+//                 'Content-Type': 'application/json'
+//             }
+//         });
 
-        // Checking if the response is successful
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-        }
+//         // Checking if the response is successful
+//         if (!response.ok) {
+//             throw new Error(`Error: ${response.status}`);
+//         }
 
-        // Parsing the response body as JSON
-        const data = await response.json();
+//         // Parsing the response body as JSON
+//         const data = await response.json();
 
-        // Return the recommendations from the response
-        // The structure of 'data' depends on Spotify's response format
-        return data.tracks; // This is an example, adjust based on actual response structure
-    } catch (error) {
-        console.error('Error fetching Spotify recommendations:', error);
-        return [];
-    }
-}
+//         // Return the recommendations from the response
+//         // The structure of 'data' depends on Spotify's response format
+//         return data.tracks; // This is an example, adjust based on actual response structure
+//     } catch (error) {
+//         console.error('Error fetching Spotify recommendations:', error);
+//         return [];
+//     }
+// }
   
 /**Fetches the user's profile from the api */
 async function getProfile() {
