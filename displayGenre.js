@@ -1,6 +1,5 @@
 
 var genreArray = [];
-var genreArray = JSON.parse(localStorage.getItem('genre_array'));
 function getGenres() {
     var topArtistString = localStorage.getItem('top_artists');
 	if (topArtistString !== null && typeof topArtistString === "string") {
@@ -34,7 +33,7 @@ function displayGenre() {
     var genreListElement = document.getElementById('genreList');
     // Clear the existing content in the genreListElement
     genreListElement.innerHTML = '';
-    // Display only the top 5 genres
+    // Display the top 20 genres
     for (var i = 0; i < Math.min(20, genreArray.length); i++) {
         var listItem = document.createElement('li');
         listItem.textContent = genreArray[i][0] + ' - ' + genreArray[i][1] + ' occurrences';
