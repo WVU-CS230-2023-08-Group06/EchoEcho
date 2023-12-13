@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var genreArray = JSON.parse(localStorage.getItem('genre_array')) || [];
 
     // Extract genre names and counts from the array
-    var genreNames = genreArray.map(function (entry) {
+    var genreNames = genreArray.slice(0, 20).map(function (entry) {
         return entry[0];
     });
 
-    var genreCounts = genreArray.map(function (entry) {
+    var genreCounts = genreArray.slice(0, 20).map(function (entry) {
         return entry[1];
     });
 
