@@ -79,6 +79,9 @@ header {
 .navBar {
     background-color: purple;
     overflow: hidden;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
   }
   
   .navBar a {
