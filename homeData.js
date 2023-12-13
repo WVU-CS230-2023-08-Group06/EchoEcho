@@ -111,7 +111,7 @@ function drawTopLists() {
 		const title1 = 'Top 5 Artists';
 		drawCenteredText(title1, canvas.width / 2, 40);
 		for (let i = 0; i < fiveArtists.length; i++) {
-    		drawCenteredText(`${i + 1}. ${fiveArtists[i]}`, canvas.width / 2, 70 + i * 20);
+    		drawCenteredText(`${i + 1}. ${fiveArtists[i]}`, canvas.width / 2, 70 + i * 30);
 		}
 
 		// Calculate the starting position for list 2, depending on the length of list 1
@@ -121,18 +121,9 @@ function drawTopLists() {
 		const title2 = 'Top 5 Tracks';
 		drawCenteredText(title2, canvas.width / 2, list2StartY);
 		for (let i = 0; i < fiveTracks.length; i++) {
-    		drawCenteredText(`${i + 1}. ${fiveTracks[i]}`, canvas.width / 2, list2StartY + 30 + i * 20);
+    		drawCenteredText(`${i + 1}. ${fiveTracks[i]}`, canvas.width / 2, list2StartY + 30 + i * 30);
 		}
     }
-
-	
-    // Create a popup with the canvas image
-    const popup = window.open('', 'Top 5 Lists', 'width=600,height=700');
-	if (!popup) {
-        alert('Popup was blocked! Please allow popups for this website.');
-        return;
-    }
-    popup.document.body.appendChild(canvas);
 
 	// Add Twitter share link
     const twitterLink = popup.document.createElement('a');
@@ -152,6 +143,15 @@ function drawTopLists() {
     facebookImg.alt = 'Share on Facebook';
     facebookLink.appendChild(facebookImg);
     popup.document.body.appendChild(facebookLink);
+	
+    // Create a popup with the canvas image
+    const popup = window.open('', 'Top 5 Lists', 'width=510,height=700');
+	if (!popup) {
+        alert('Popup was blocked! Please allow popups for this website.');
+        return;
+    }
+    popup.document.body.appendChild(canvas);
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {
