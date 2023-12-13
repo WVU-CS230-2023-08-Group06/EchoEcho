@@ -1,8 +1,4 @@
 function displayGenre() {
-    // Sort genreArray based on the count (genreArray[i][1]) in descending order
-    genreArray.sort(function(a, b) {
-        return b[1] - a[1];
-    });
     var genreListElement = document.getElementById('genreList');
     // Clear the existing content in the genreListElement
     genreListElement.innerHTML = '';

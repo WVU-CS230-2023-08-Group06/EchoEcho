@@ -94,70 +94,51 @@ function drawTopLists() {
     var background = new Image();
     background.src = "/sharingBackground.png";
 
-	// Function to draw centered text
-	function drawCenteredText(text, x, y) {
-    const textWidth = ctx.measureText(text).width;
-    const centeredX = x - (textWidth / 2);
-    ctx.fillText(text, centeredX, y);
-	}
-
     background.onload = function() {
         ctx.drawImage(background, 0, 0);
 
-		ctx.fillStyle = 'White';
-		ctx.font = '20px Arial';
+        // Draw list 1
+        ctx.fillStyle = 'White';
+        ctx.font = '20px Arial';
+        ctx.fillText('Top 5 Artists', 200, 40);
+        for (let i = 0; i < fiveArtists.length; i++) {
+            ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, 200, 70 + i * 20);
+        }
 
-		// Draw list 1 - Top 5 Artists
-		const title1 = 'Top 5 Artists';
-		drawCenteredText(title1, canvas.width / 2, 40);
-		for (let i = 0; i < fiveArtists.length; i++) {
-    		drawCenteredText(`${i + 1}. ${fiveArtists[i]}`, canvas.width / 2, 70 + i * 30);
-		}
-
-		// Calculate the starting position for list 2, depending on the length of list 1
-		let list2StartY = 70 + fiveArtists.length * 30 + 30;
-
-		// Draw list 2 - Top 5 Tracks
-		const title2 = 'Top 5 Tracks';
-		drawCenteredText(title2, canvas.width / 2, list2StartY);
-		for (let i = 0; i < fiveTracks.length; i++) {
-    		drawCenteredText(`${i + 1}. ${fiveTracks[i]}`, canvas.width / 2, list2StartY + 30 + i * 30);
-		}
+        // Draw list 2
+        ctx.fillStyle = 'White';
+        ctx.font = '20x Arial';
+        ctx.fillText('Top 5 Tracks', 200, 200);
+        for (let i = 0; i < fiveTracks.length; i++) {
+            ctx.fillText(`${i + 1}. ${fiveTracks[i]}`, 200, 70 + i * 20);
+        }
     }
 
+	
     // Create a popup with the canvas image
-    const popup = window.open('', 'Top 5 Lists', 'width=530,height=600');
+    const popup = window.open('', 'Top 5 Lists', 'width=600,height=700');
 	if (!popup) {
         alert('Popup was blocked! Please allow popups for this website.');
         return;
     }
     popup.document.body.appendChild(canvas);
 
-	// Add instructions for saving and sharing
-    const instructions = popup.document.createElement('p');
-    instructions.textContent = 'Right-click on the image to save it to your device. Share it with your friends using the links below!';
-    instructions.style = 'text-align: center; margin-top: 20px;';
-    popup.document.body.appendChild(instructions);
-
-    // Add Twitter share link
+	// Add Twitter share link
     const twitterLink = popup.document.createElement('a');
     twitterLink.href = 'https://twitter.com/intent/tweet?text=Check%20this%20amazing%20website%20out!&url=https://main.d3ontvtqcgyr6j.amplifyapp.com/';
     twitterLink.target = '_blank';
     const twitterImg = popup.document.createElement('img');
-    twitterImg.src = 'twitterX.png';
+    twitterImg.src = '*/twitterX.png';
     twitterImg.alt = 'Share on Twitter';
-    twitterImg.style = 'margin: 10px;';
     twitterLink.appendChild(twitterImg);
     popup.document.body.appendChild(twitterLink);
 
     // Add Facebook share link
     const facebookLink = popup.document.createElement('a');
     facebookLink.href = 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmain.d3ontvtqcgyr6j.amplifyapp.com%2F';
-    facebookLink.target = '_blank';
     const facebookImg = popup.document.createElement('img');
-    facebookImg.src = 'facebookIcon.png';
+    facebookImg.src = 'facebookIcon.png'; 
     facebookImg.alt = 'Share on Facebook';
-    facebookImg.style = 'margin: 10px;';
     facebookLink.appendChild(facebookImg);
     popup.document.body.appendChild(facebookLink);
 }
@@ -189,12 +170,30 @@ function getGenres() {
             if (!found) {
                 genreArray.push([genres[i], 1]);
             }
-
         }
-    });    
+    });
 	genreArray.sort(function(a, b) {
     	return b[1] - a[1];
     });
     console.log(genreArray);
 }
 
+// Assuming genreArray is available locally, either defined in another script or fetched from local storage
+// var genreArray = [ ['Genre1', 10], ['Genre2', 8], ['Genre3', 6], ['Genre4', 5], ['Genre5', 4] ];
+
+// Function to display the top 5 genres
+function displayTopGenres() {
+    // Assuming you have an HTML element with id "genreList" to display genres
+    var genreListElement = document.getElementById('genreList');
+    // Clear the existing content in the genreListElement
+    genreListElement.innerHTML = '';
+    // Display only the top 5 genres
+    for (var i = 0; i < Math.min(5, genreArray.length); i++) {
+        var listItem = document.createElement('li');
+        listItem.textContent = genreArray[i][0] + ' - ' + genreArray[i][1] + ' occurrences';
+        genreListElement.appendChild(listItem);
+    }
+}
+
+// Trigger displayTopGenres when the window is loaded
+window.addEventListener('load', displayTopGenres);
