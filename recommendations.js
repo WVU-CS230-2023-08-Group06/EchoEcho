@@ -25,8 +25,6 @@ async function getRecommendations() {
             },
         });
 
-        console.log(response);
-
         const data = await response.json();
         const recommendedTracks = data.tracks;
         console.log('Recommended tracks:', recommendedTracks);
@@ -37,7 +35,59 @@ async function getRecommendations() {
     }
 }
 
-function displayTracksOnPage(tracks) {
+// function displayTracksOnPage(tracks) {
+//     const trackListElement = document.getElementById('recommendedTracksList');
+
+//     // Clear existing contents
+//     trackListElement.innerHTML = '';
+
+//     if (tracks && tracks.length > 0) {
+//         tracks.forEach(track => {
+//             const listItem = document.createElement('li');
+//             listItem.className = 'trackList';
+
+//             const trackPicture = document.createElement('img');
+//             trackPicture.src = track.album.images[0].url;
+//             trackPicture.className = 'trackImg';
+
+//             const trackLink = document.createElement('a');
+//             trackLink.href = track.external_urls.spotify;
+//             trackLink.textContent = track.name;
+//             trackLink.className = 'trackLinks';
+
+//             listItem.appendChild(trackPicture);
+//             listItem.appendChild(trackLink);
+//             trackListElement.appendChild(listItem);
+//         });
+//     } else {
+//         const noTracksMessage = document.createElement('p');
+//         noTracksMessage.textContent = 'No recommended tracks found.';
+//         trackListElement.appendChild(noTracksMessage);
+//     }
+// }
+
+// Usage example
+// async function displayRecommendations() {
+//     const recommendedTracks = await getRecommendations();
+
+//     if (recommendedTracks) {
+//         // Display recommended tracks as needed, e.g., on a webpage
+//         displayTracksOnPage(recommendedTracks); // You can use the previously defined displayTracksOnPage function
+//     }
+// }
+
+// // Call the function to get and display recommendations
+// displayRecommendations();
+
+function displayTracksOnPage() {
+    var recommendationString = localStorage.getItem('Recommended_tracks');
+
+    if (recommendationString !== null && typeof recommendationString === "string") {
+		console.log(recommendationString);
+		var tracks = JSON.parse(recommendationString);   // deserializing here
+		console.log("Succesfully retrieved 'tasks' and contents.");
+	}
+
     const trackListElement = document.getElementById('recommendedTracksList');
 
     // Clear existing contents
@@ -45,38 +95,22 @@ function displayTracksOnPage(tracks) {
 
     if (tracks && tracks.length > 0) {
         tracks.forEach(track => {
-            const listItem = document.createElement('li');
+            var listItem = document.createElement('li');
             listItem.className = 'trackList';
 
-            const trackPicture = document.createElement('img');
+            var trackPicture = document.createElement('img');
             trackPicture.src = track.album.images[0].url;
             trackPicture.className = 'trackImg';
 
-            const trackLink = document.createElement('a');
+            var trackLink = document.createElement('a');
             trackLink.href = track.external_urls.spotify;
             trackLink.textContent = track.name;
             trackLink.className = 'trackLinks';
 
             listItem.appendChild(trackPicture);
             listItem.appendChild(trackLink);
+            console.log(track.name);
             trackListElement.appendChild(listItem);
         });
-    } else {
-        const noTracksMessage = document.createElement('p');
-        noTracksMessage.textContent = 'No recommended tracks found.';
-        trackListElement.appendChild(noTracksMessage);
     }
 }
-
-// Usage example
-async function displayRecommendations() {
-    const recommendedTracks = await getRecommendations();
-
-    if (recommendedTracks) {
-        // Display recommended tracks as needed, e.g., on a webpage
-        displayTracksOnPage(recommendedTracks); // You can use the previously defined displayTracksOnPage function
-    }
-}
-
-// Call the function to get and display recommendations
-displayRecommendations();
