@@ -66,18 +66,18 @@ function displayTracksOnPage(tracks) {
     }
 }
 
-// Usage example
-// async function displayRecommendations() {
-//     const recommendedTracks = await getRecommendations();
+//Usage example
+async function displayRecommendations() {
+    const recommendedTracks = await getRecommendations();
 
-//     if (recommendedTracks) {
-//         // Display recommended tracks as needed, e.g., on a webpage
-//         displayTracksOnPage(recommendedTracks); // You can use the previously defined displayTracksOnPage function
-//     }
-// }
+    if (recommendedTracks) {
+        // Display recommended tracks as needed, e.g., on a webpage
+        displayTracksOnPage(recommendedTracks); // You can use the previously defined displayTracksOnPage function
+    }
+}
 
-// // Call the function to get and display recommendations
-// displayRecommendations();
+// Call the function to get and display recommendations
+displayRecommendations();
 
 // function displayTracksOnPage() {
 //     var recommendationString = localStorage.getItem('Recommended_tracks');
