@@ -34,13 +34,13 @@ header {
 	overflow-x: auto;
 	overflow-y: auto;
 }
-.recommendedTrackList {
+.trackList {
     margin-bottom:10px;
     border:1px solid #000;
     border-radius:10px;
 }
 
-.recommendedTrackList:hover {
+.trackList:hover {
     background-color:#000;
     color:white;
 }
