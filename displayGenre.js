@@ -20,7 +20,7 @@ function displayGenreChart() {
         return genre[1];
     });
 
-    // Assuming you have an HTML canvas element with id "genreChart"
+    // Assuming element with id "genreChart"
     var ctx = document.getElementById('genreChart').getContext('2d');
 
     // Create the pie chart
@@ -37,7 +37,6 @@ function displayGenreChart() {
                     'rgba(75, 192, 192, 0.8)',
                     'rgba(153, 102, 255, 0.8)',
                     'rgba(255, 159, 64, 0.8)',
-                    // Add more colors as needed
                 ],
             }]
         },

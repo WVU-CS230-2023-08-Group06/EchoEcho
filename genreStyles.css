@@ -99,3 +99,16 @@ header {
     background-color: orchid;
     color: white;
   }
+  
+  .genreDisplay {
+    background-color: rgb(183, 39, 183);
+    color: rgb(12, 12, 12);
+    border-radius: 10px;
+    display: inline-block;
+    margin: 100px 0;
+    text-align: center;
+    width: 100%; /* Set the width to 100% */
+    height: 500px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
