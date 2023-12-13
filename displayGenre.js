@@ -41,3 +41,4 @@ function displayGenre() {
         genreListElement.appendChild(listItem);
     }
 }
+window.addEventListener('load', displayGenre);
