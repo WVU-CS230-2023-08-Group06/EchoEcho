@@ -201,7 +201,6 @@ function getGenres() {
     });
 	localStorage.setItem('genre_array', JSON.stringify(genreArray));
     console.log(genreArray);
-}
 
 // Assuming genreArray is available locally, either defined in another script or fetched from local storage
 // var genreArray = [ ['Genre1', 10], ['Genre2', 8], ['Genre3', 6], ['Genre4', 5], ['Genre5', 4] ];
