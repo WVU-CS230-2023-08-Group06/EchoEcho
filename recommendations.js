@@ -78,39 +78,3 @@ async function displayRecommendations() {
 
 // Call the function to get and display recommendations
 displayRecommendations();
-
-// function displayTracksOnPage() {
-//     var recommendationString = localStorage.getItem('Recommended_tracks');
-
-//     if (recommendationString !== null && typeof recommendationString === "string") {
-// 		console.log(recommendationString);
-// 		var tracks = JSON.parse(recommendationString);   // deserializing here
-// 		console.log("Succesfully retrieved 'tasks' and contents.");
-// 	}
-
-//     const trackListElement = document.getElementById('recommendedTracksList');
-
-//     // Clear existing contents
-//     trackListElement.innerHTML = '';
-
-//     if (tracks && tracks.length > 0) {
-//         tracks.forEach(track => {
-//             var listItem = document.createElement('li');
-//             listItem.className = 'trackList';
-
-//             var trackPicture = document.createElement('img');
-//             trackPicture.src = track.album.images[0].url;
-//             trackPicture.className = 'trackImg';
-
-//             var trackLink = document.createElement('a');
-//             trackLink.href = track.external_urls.spotify;
-//             trackLink.textContent = track.name;
-//             trackLink.className = 'trackLinks';
-
-//             listItem.appendChild(trackPicture);
-//             listItem.appendChild(trackLink);
-//             console.log(track.name);
-//             trackListElement.appendChild(listItem);
-//         });
-//     }
-// }
