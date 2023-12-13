@@ -94,46 +94,46 @@ function drawTopLists() {
     var background = new Image();
     background.src = "/sharingBackground.png";
 
-	// Function to draw centered text
-	function drawCenteredText(text, x, y) {
-    const textWidth = ctx.measureText(text).width;
-    const centeredX = x - (textWidth / 2);
-    ctx.fillText(text, centeredX, y);
-	}
+    // Function to draw centered text
+    function drawCenteredText(text, x, y) {
+        const textWidth = ctx.measureText(text).width;
+        const centeredX = x - (textWidth / 2);
+        ctx.fillText(text, centeredX, y);
+    }
 
     background.onload = function() {
         ctx.drawImage(background, 0, 0);
 
-		ctx.fillStyle = 'White';
-		ctx.font = '20px Arial';
+        ctx.fillStyle = 'White';
+        ctx.font = '20px Arial';
 
-		// Draw list 1 - Top 5 Artists
-		const title1 = 'Top 5 Artists';
-		drawCenteredText(title1, canvas.width / 2, 40);
-		for (let i = 0; i < fiveArtists.length; i++) {
-    		drawCenteredText(`${i + 1}. ${fiveArtists[i]}`, canvas.width / 2, 70 + i * 30);
-		}
+        // Draw list 1 - Top 5 Artists
+        const title1 = 'Top 5 Artists';
+        drawCenteredText(title1, canvas.width / 2, 40);
+        for (let i = 0; i < fiveArtists.length; i++) {
+            drawCenteredText(`${i + 1}. ${fiveArtists[i]}`, canvas.width / 2, 70 + i * 30);
+        }
 
-		// Calculate the starting position for list 2, depending on the length of list 1
-		let list2StartY = 70 + fiveArtists.length * 30 + 30;
+        // Calculate the starting position for list 2, depending on the length of list 1
+        let list2StartY = 70 + fiveArtists.length * 30 + 30;
 
-		// Draw list 2 - Top 5 Tracks
-		const title2 = 'Top 5 Tracks';
-		drawCenteredText(title2, canvas.width / 2, list2StartY);
-		for (let i = 0; i < fiveTracks.length; i++) {
-    		drawCenteredText(`${i + 1}. ${fiveTracks[i]}`, canvas.width / 2, list2StartY + 30 + i * 30);
-		}
-    }
+        // Draw list 2 - Top 5 Tracks
+        const title2 = 'Top 5 Tracks';
+        drawCenteredText(title2, canvas.width / 2, list2StartY);
+        for (let i = 0; i < fiveTracks.length; i++) {
+            drawCenteredText(`${i + 1}. ${fiveTracks[i]}`, canvas.width / 2, list2StartY + 30 + i * 30);
+        }
+    };
 
     // Create a popup with the canvas image
-    const popup = window.open('', 'Top 5 Lists', 'width=520,height=600');
-	if (!popup) {
+    const popup = window.open('', 'Top 5 Lists', 'width=530,height=650');
+    if (!popup) {
         alert('Popup was blocked! Please allow popups for this website.');
         return;
     }
     popup.document.body.appendChild(canvas);
 
-	// Add instructions for saving and sharing
+    // Add instructions for saving and sharing
     const instructions = popup.document.createElement('p');
     instructions.textContent = 'Right-click on the image to save it to your device. Share it with your friends using the links below!';
     instructions.style = 'text-align: center; margin-top: 20px;';
@@ -162,6 +162,7 @@ function drawTopLists() {
     popup.document.body.appendChild(facebookLink);
 }
 
+
 document.addEventListener('DOMContentLoaded', function () {
 	displayArtists();
 	displayTracks();
@@ -189,12 +190,29 @@ function getGenres() {
             if (!found) {
                 genreArray.push([genres[i], 1]);
             }
-
         }
-    });    
+    });
 	genreArray.sort(function(a, b) {
     	return b[1] - a[1];
     });
     console.log(genreArray);
 }
 
+// Assuming genreArray is available locally, either defined in another script or fetched from local storage
+// var genreArray = [ ['Genre1', 10], ['Genre2', 8], ['Genre3', 6], ['Genre4', 5], ['Genre5', 4] ];
+// Function to display the top 5 genres
+function displayTopGenres() {
+    // Assuming you have an HTML element with id "genreList" to display genres
+    var genreListElement = document.getElementById('genreList');
+    // Clear the existing content in the genreListElement
+    genreListElement.innerHTML = '';
+    // Display only the top 5 genres
+    for (var i = 0; i < Math.min(5, genreArray.length); i++) {
+        var listItem = document.createElement('li');
+        listItem.textContent = genreArray[i][0] + ' - ' + genreArray[i][1] + ' occurrences';
+        genreListElement.appendChild(listItem);
+    }
+}
+
+// Trigger displayTopGenres when the window is loaded
+window.addEventListener('load', displayTopGenres);

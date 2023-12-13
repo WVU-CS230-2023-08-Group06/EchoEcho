@@ -1,22 +1,42 @@
-function displayGenre() {
-    // Sort genreArray based on the count (genreArray[i][1]) in descending order
-    genreArray.sort(function(a, b) {
-        return b[1] - a[1];
+
+var genreArray = [];
+function getGenres() {
+    var topArtistString = localStorage.getItem('top_artists');
+	if (topArtistString !== null && typeof topArtistString === "string") {
+		var topArtists = JSON.parse(topArtistString);   // deserializing here
+		console.log("Succesfully retrieved artists.");
+	}
+    topArtists.forEach(function(artist) {
+        var genres = artist.genres;
+        for (i in genres) {
+            var found = false;
+            for (var j in genreArray) {
+                if (genres[i] === genreArray[j][0]) {
+                    genreArray[j][1]++;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                genreArray.push([genres[i], 1]);
+            }
+        }
     });
+	genreArray.sort(function(a, b) {
+    	return b[1] - a[1];
+    });
+    console.log(genreArray);
+}
+
+function displayGenre() {
+    // Assuming you have an HTML element with id "genreList" to display genres
     var genreListElement = document.getElementById('genreList');
     // Clear the existing content in the genreListElement
     genreListElement.innerHTML = '';
-    // Iterate through the sorted genreArray and display each genre
-    genreArray.forEach(function(genre) {
+    // Display only the top 5 genres
+    for (var i = 0; i < Math.min(20, genreArray.length); i++) {
         var listItem = document.createElement('li');
-        listItem.textContent = genre[0] + ' - ' + genre[1] + ' occurrences';
+        listItem.textContent = genreArray[i][0] + ' - ' + genreArray[i][1] + ' occurrences';
         genreListElement.appendChild(listItem);
-    });
+    }
 }
-// Call displayGenre after calling getGenres
-// You should call displayGenre after the data is ready to be displayed
-// Assuming you have an HTML button with id "displayButton" to trigger the display
-document.addEventListener('DOMContentLoaded', function () {
-	console.log(getGenres());
-	displayGenre();
-});
