@@ -31,13 +31,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         'rgba(75, 192, 192, 0.8)',
                         'rgba(153, 102, 255, 0.8)',
                         'rgba(255, 159, 64, 0.8)',
-                        // Add more colors as needed
                     ],
                 }]
             },
             options: {
                 responsive: false,
                 maintainAspectRatio: false,
+                plugins:{
+                    legend: {
+                        display: false
+                    }
+                }
                 tooltips: {
                     callbacks: {
                         label: function (tooltipItem, data) {
@@ -48,16 +52,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 layout: {
                     padding: {
-                        left: 200,
-                        right: 200,
-                        top: 200,
-                        bottom: 200,
+                        left: 100,
+                        right: 100,
+                        top: 100,
+                        bottom: 100,
                     }
                 },
-                legend: {
-                    display: false
-                }
-            }
+            } 
         });
     } else {
         console.error('Canvas element with id "genreChart" not found.');
