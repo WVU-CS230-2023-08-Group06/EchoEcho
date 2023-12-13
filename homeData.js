@@ -189,16 +189,17 @@ function getGenres() {
             }
         }
     });
-
+	genreArray.sort(function(a, b) {
+    	return b[1] - a[1];
+	});
+	
     // Store the genreArray in local storage
     localStorage.setItem('genre_array', JSON.stringify(genreArray));
 
     // Log the genreArray to the console
     console.log(genreArray);
 }
-	genreArray.sort(function(a, b) {
-    	return b[1] - a[1];
-    });
+
 	localStorage.setItem('genre_array', JSON.stringify(genreArray));
     console.log(genreArray);
 
