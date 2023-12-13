@@ -60,6 +60,17 @@ header {
     color:black;
 }
 
+.trackImg {
+    display:inline-block;
+    height:100px;
+    border-radius:10px;
+    padding: 20px 20px;
+}
+
+.trackGenre {
+    display:inline-block;
+}
+
 
 #returnButton {
     padding: 15px 20px;
