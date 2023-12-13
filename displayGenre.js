@@ -1,5 +1,5 @@
 function getGenres() {
-    var topArtistString = localStorage.getItem('top_artists');
+    var topArtistString = localStorage.getItem(genreArray);
 	if (topArtistString !== null && typeof topArtistString === "string") {
 		var topArtists = JSON.parse(topArtistString);   // deserializing here
 		console.log("Succesfully retrieved artists.");
