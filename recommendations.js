@@ -19,7 +19,7 @@ async function getRecommendations() {
     let trackIds = topTracks.map(track => track.id).join(',');
 
     try {
-        const response = await fetch(`https://api.spotify.com/v1/recommendations?limit=60&seed_tracks=${trackIds}`, {
+        const response = await fetch(`https://api.spotify.com/v1/recommendations?limit=5&seed_tracks=${trackIds}`, {
             headers: {
                 Authorization: 'Bearer ' + accessToken,
             },
@@ -32,11 +32,38 @@ async function getRecommendations() {
             console.log('Recommended tracks:', recommendedTracks);
             return recommendedTracks;
         } else {
-            console.error('No recommended tracks found.');
-            return null;
+            console.warn('No recommended tracks found. Trying different approach.');
+            // If no recommendations were found, try to fetch general recommendations
+            return await fetchGeneralRecommendations();
         }
     } catch (error) {
         console.error('Error fetching recommendations:', error);
+        return null;
+    }
+}
+
+async function fetchGeneralRecommendations() {
+    let accessToken = localStorage.getItem('access_token');
+
+    try {
+        const response = await fetch(`https://api.spotify.com/v1/recommendations?limit=5`, {
+            headers: {
+                Authorization: 'Bearer ' + accessToken,
+            },
+        });
+
+        const data = await response.json();
+
+        if (data && data.tracks && data.tracks.length > 0) {
+            const recommendedTracks = data.tracks;
+            console.log('General recommended tracks:', recommendedTracks);
+            return recommendedTracks;
+        } else {
+            console.error('No general recommended tracks found.');
+            return null;
+        }
+    } catch (error) {
+        console.error('Error fetching general recommendations:', error);
         return null;
     }
 }
