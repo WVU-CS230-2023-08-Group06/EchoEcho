@@ -34,18 +34,18 @@ header {
 	overflow-x: auto;
 	overflow-y: auto;
 }
-.recommendationsList {
+.recommendationedTracksList {
     margin-bottom:10px;
     border:1px solid #000;
     border-radius:10px;
 }
 
-.recommendationsList:hover {
+.recommendationedTracksList:hover {
     background-color:#000;
     color:white;
 }
 
-.recommendationsLinks {
+.trackLinks {
     color:white;
     display:block;
     padding:30px;
@@ -55,7 +55,7 @@ header {
     height:100%;*/
 }
 
-.recommendationsLinks:hover {
+.trackLinks:hover {
     background-color:magenta;
     color:black;
 }
