@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	displayArtists();
 	displayTracks();
 	getGenres();
+    displayTopGenres();
 });
 
 var genreArray = [];
@@ -218,5 +219,3 @@ function displayTopGenres() {
     }
 }
 
-// Trigger displayTopGenres when the window is loaded
-window.addEventListener('load', displayTopGenres);
