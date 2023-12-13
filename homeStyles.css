@@ -87,13 +87,13 @@ header {
 }
 
 #genreList {
-    font-size: 18px;
+    font-size: 25px;
     margin-top: 20px;
 }
 
 #genreList li {
     margin-bottom: 10px;
-    padding: 60px;
+    padding: 62px;
 }
 
 .returnButton {
