@@ -42,13 +42,13 @@ header {
     padding: 15px 15px;
 }
 
-.artistList, .trackList, #genreList{
+.artistList, .trackList, .genreList{
     margin-bottom:10px;
     border:1px solid #000;
     border-radius:10px;
 }
 
-.artistList:hover, .trackList:hover, #genreList:hover{
+.artistList:hover, .trackList:hover, .genreList:hover{
     background-color:#000;
     color:white;
 }
