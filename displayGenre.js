@@ -1,5 +1,5 @@
-
 function displayGenre() {
+    var genreArray = localStorage.getItem('genre_array');
     // Assuming you have an HTML element with id "genreList" to display genres
     var genreListElement = document.getElementById('genreList');
     // Clear the existing content in the genreListElement
