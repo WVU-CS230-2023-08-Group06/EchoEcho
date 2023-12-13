@@ -209,7 +209,7 @@ function displayTopGenres() {
     // Display only the top 5 genres
     for (var i = 0; i < Math.min(5, genreArray.length); i++) {
         var listItem = document.createElement('li');
-        listItem.textContent = genreArray[i][0] + '\n' + genreArray[i][1] + ' artists';
+        listItem.textContent = genreArray[i][0] + '<br>' + genreArray[i][1] + ' artists';
         genreListElement.appendChild(listItem);
     }
 }

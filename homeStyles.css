@@ -42,13 +42,13 @@ header {
     padding: 15px 15px;
 }
 
-.artistList, .trackList, .genreList{
+.artistList, .trackList, #genreList{
     margin-bottom:10px;
     border:1px solid #000;
     border-radius:10px;
 }
 
-.artistList:hover, .trackList:hover, .genreList:hover{
+.artistList:hover, .trackList:hover, #genreList:hover{
     background-color:#000;
     color:white;
 }
@@ -87,6 +87,7 @@ header {
     padding: 15px;
 }
 
+/*
 #genreList {
     font-size: 25px;
     margin-top: 20px;
@@ -96,6 +97,7 @@ header {
     margin-bottom: 10px;
     padding: 76.5px;
 }
+*/
 
 .returnButton {
     padding: 15px 20px;
@@ -156,8 +158,8 @@ button {
     right: 20px;
     padding: 15px 20px;
     font-size: 20px;
-    background-color: pink; /* Change button background color to pink */
-    color: purple; /* Change button text color to purple */
+    background-color: pink; 
+    color: purple; 
     border: none;
     cursor: pointer;
     border-radius: 10px;
