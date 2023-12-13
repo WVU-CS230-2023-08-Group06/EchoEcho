@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     legend: {
                         display: false
                     }
-                }
+                },
                 tooltips: {
                     callbacks: {
                         label: function (tooltipItem, data) {
