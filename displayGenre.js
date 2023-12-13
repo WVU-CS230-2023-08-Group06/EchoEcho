@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 layout: {
                     padding: {
-                        left: 100,
-                        right: 100,
-                        top: 100,
-                        bottom: 100,
+                        left: 200,
+                        right: 200,
+                        top: 200,
+                        bottom: 200,
                     }
                 },
                 legend: {
