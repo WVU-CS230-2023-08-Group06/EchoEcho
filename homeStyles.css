@@ -49,7 +49,7 @@ header {
 }
 
 .genreList {
-    padding: 50px;
+    padding: 100px;
 }
 
 .artistList:hover, .trackList:hover, .genreList:hover{
