@@ -25,6 +25,8 @@ async function getRecommendations() {
             },
         });
 
+        console.log(response);
+
         const data = await response.json();
         const recommendedTracks = data.tracks;
         console.log('Recommended tracks:', recommendedTracks);
