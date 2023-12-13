@@ -97,21 +97,24 @@ function drawTopLists() {
     background.onload = function() {
         ctx.drawImage(background, 0, 0);
 
-        // Draw list 1
-        ctx.fillStyle = 'White';
-        ctx.font = '20px Arial';
-        ctx.fillText('Top 5 Artists', 200, 40);
-        for (let i = 0; i < fiveArtists.length; i++) {
-            ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, 200, 70 + i * 20);
-        }
-
-        // Draw list 2
-        ctx.fillStyle = 'White';
-        ctx.font = '20x Arial';
-        ctx.fillText('Top 5 Tracks', 200, 200);
-        for (let i = 0; i < fiveTracks.length; i++) {
-            ctx.fillText(`${i + 1}. ${fiveTracks[i]}`, 200, 70 + i * 20);
-        }
+		ctx.fillStyle = 'White';
+		ctx.font = '20px Arial';
+		ctx.fillText('Top 5 Artists', 150, 40);
+		for (let i = 0; i < fiveArtists.length; i++) {
+			ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, 150, 70 + i * 20);
+		}
+		
+		// Calculate the starting position for list 2, depending on the length of list 1
+		// Assuming a 20px line height and an additional 30px spacing between the lists
+		let list2StartY = 70 + fiveArtists.length * 20 + 30;
+		
+		// Draw list 2 - Top 5 Tracks
+		ctx.fillStyle = 'White';
+		ctx.font = '20px Arial'; // Corrected the font size syntax
+		ctx.fillText('Top 5 Tracks', 150, list2StartY);
+		for (let i = 0; i < fiveTracks.length; i++) {
+			ctx.fillText(`${i + 1}. ${fiveTracks[i]}`, 150, list2StartY + 30 + i * 20);
+		}
     }
 
 	
