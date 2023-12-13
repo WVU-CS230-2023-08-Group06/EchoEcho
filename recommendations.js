@@ -19,7 +19,7 @@ async function getRecommendations() {
     let trackIds = topTracks.map(track => track.id).join(',');
 
     try {
-        const response = await fetch(`https://api.spotify.com/v1/recommendations?limit=5&seed_tracks=${trackIds}`, {
+        const response = await fetch(`https://api.spotify.com/v1/recommendations?limit=60&seed_tracks=${trackIds}`, {
             headers: {
                 Authorization: 'Bearer ' + accessToken,
             },
