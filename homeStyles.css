@@ -48,6 +48,10 @@ header {
     border-radius:10px;
 }
 
+.genreList {
+    padding: 50px;
+}
+
 .artistList:hover, .trackList:hover, .genreList:hover{
     background-color:#000;
     color:white;
