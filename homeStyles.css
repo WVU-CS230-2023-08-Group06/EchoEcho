@@ -75,7 +75,15 @@ header {
 }
 
 .artistGenre, .trackGenre{
-    display:inline-block;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 100px 0;
+    text-align: center;
+	width: 30%;
+    height: 50%;
+	overflow-x: hidden;
+	overflow-y: auto;
+    padding: 15px;
 }
 
 .returnButton {

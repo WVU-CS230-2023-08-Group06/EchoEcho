@@ -1,17 +1,12 @@
 function displayGenre() {
+    // Assuming you have an HTML element with id "genreList" to display genres
     var genreListElement = document.getElementById('genreList');
     // Clear the existing content in the genreListElement
     genreListElement.innerHTML = '';
-    // Iterate through the sorted genreArray and display each genre
-    genreArray.forEach(function(genre) {
+    // Display only the top 5 genres
+    for (var i = 0; i < Math.min(20, genreArray.length); i++) {
         var listItem = document.createElement('li');
-        listItem.textContent = genre[0] + ' - ' + genre[1] + ' occurrences';
+        listItem.textContent = genreArray[i][0] + ' - ' + genreArray[i][1] + ' occurrences';
         genreListElement.appendChild(listItem);
-    });
+    }
 }
-// Call displayGenre after calling getGenres
-// You should call displayGenre after the data is ready to be displayed
-// Assuming you have an HTML button with id "displayButton" to trigger the display
-document.addEventListener('DOMContentLoaded', function (){
-	displayGenre();
-});
