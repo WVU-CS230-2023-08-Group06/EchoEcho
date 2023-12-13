@@ -6,28 +6,28 @@
     <link rel="stylesheet" type="text/css" href="recommendations.css">
     <script src="recommendations.js"></script>
     <title>Your Recommended Tracks</title>
-   
 </head>
 <body>
 <header>
+    <!--Navbar Component-->
     <div class="navBar">
         <a href="homepage.html">Home</a>
         <a href="topArtistPage.html">Artists</a>
         <a href="topTracksPage.html">Tracks</a>
         <a href="genrePage.html">Genres</a>
-        <a class="active" href="recommendations.html">Recommendations</a>
         <button type="button" id="logoutBtn" onclick="logout()">Logout</button>
     </div>
     <h1>Your 5 Recommended Tracks</h1>
 </header>
 
+<!--Display 5 recommended songs-->
 <div class="recommendations">
     <header id="sticky"></header>
     <ol id="recommendedTracksList"></ol>
 </div>
 
+    <!--Contains buttons to link to Facebook and Twitter share feature-->
     <footer>
-
         <a href="https://twitter.com/intent/tweet?text=Check%20this%20amazing%20image!&url=https://yourwebsite.com/path/to/image-page" target="_blank">
             <img src="twitterX.png" alt="Share on Twitter">
         </a>
