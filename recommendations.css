@@ -99,3 +99,20 @@ header {
     background-color: orchid;
     color: white;
   }
+
+  #logoutBtn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 14px 16px;
+    font-size: 17px;
+    background-color: purple; /* Change button background color to pink */
+    color: white; /* Change button text color to purple */
+    border: none;
+    cursor: pointer;
+  }
+
+  #logoutBtn:hover {
+    background-color: orchid;
+    color: white;
+  }
