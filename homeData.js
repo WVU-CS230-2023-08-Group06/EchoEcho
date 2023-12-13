@@ -171,27 +171,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var genreArray = [];
 function getGenres() {
-    var topArtistString = localStorage.getItem('top_artists');
-	if (topArtistString !== null && typeof topArtistString === "string") {
-		var topArtists = JSON.parse(topArtistString);   // deserializing here
-		console.log("Succesfully retrieved artists.");
-	}
-    topArtists.forEach(function(artist) {
+    var topArtists = localStorage.getItem('top_artists');
+    topArtists.array.forEach(artist => {
         var genres = artist.genres;
         for (i in genres) {
-            var found = false;
-            for (var j in genreArray) {
+            for (j in genreArray) {
                 if (genres[i] === genreArray[j][0]) {
                     genreArray[j][1]++;
-                    found = true;
+					found = true;
+                    break;
+                }
+                if (j === genreArray.length - 1) {
+                    genreArray[j+1][0] = genres[i];
+                    genreArray[j+1][1]++;
                     break;
                 }
             }
-            if (!found) {
-                genreArray.push([genres[i], 1]);
-            }
         }
     });
+
+    // Store the genreArray in local storage
+    localStorage.setItem('genre_array', JSON.stringify(genreArray));
+
+    // Log the genreArray to the console
+    console.log(genreArray);
+}
 	genreArray.sort(function(a, b) {
     	return b[1] - a[1];
     });
