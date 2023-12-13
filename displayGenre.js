@@ -54,6 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         bottom: 100,
                     }
                 },
+                legend: {
+                    display: false
+                }
             }
         });
     } else {
