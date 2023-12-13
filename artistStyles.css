@@ -15,7 +15,7 @@ body {
 header {
     background-color: rgb(183, 39, 183); /* Change header background color to purple */
     color: pink; /* Change header text color to pink */
-    padding: 0 0 20px;
+    padding: 20px;
 }
 
 #sticky {
@@ -25,16 +25,15 @@ header {
 
 .artistDisplay {
     background-color: rgb(183, 39, 183); /* Change background color of the welcome message to purple */
-    color: black; /* Change text color of the welcome message to pink */
-    
+    color: black; /* Change text color of the welcome message to pink */  
     border-radius: 10px;
     display: inline-block;
     margin: 100px 0;
     text-align: center;
-	width: 50%;
+	  width: 50%;
     height: 500px;
-	overflow-x: auto;
-	overflow-y: auto;
+	  overflow-x: auto;
+	  overflow-y: auto;
 }
 
 .artistList {
@@ -67,7 +66,7 @@ header {
     display:inline-block;
     height:100px;
     border-radius:10px;
-    padding: 20px 20px;
+    padding: 0 20px;
 }
 
 .artistGenre {
