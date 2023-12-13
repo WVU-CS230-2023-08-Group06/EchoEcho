@@ -195,7 +195,7 @@ function getGenres() {
 	genreArray.sort(function(a, b) {
     	return b[1] - a[1];
     });
-	
+	localStorage.setItem(genreArray, 'genre_array')
     console.log(genreArray);
 }
 
