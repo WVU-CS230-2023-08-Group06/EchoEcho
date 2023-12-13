@@ -15,7 +15,7 @@ body {
 header {
     background-color: rgb(183, 39, 183); /* Change header background color to purple */
     color: pink; /* Change header text color to pink */
-    padding: 0;
+    padding: 0 0 20px;
 }
 #sticky {
     position:fixed;
