@@ -86,6 +86,16 @@ header {
     padding: 15px;
 }
 
+#genreList {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#genreList li {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
 .returnButton {
     padding: 15px 20px;
     font-size: 20px;
