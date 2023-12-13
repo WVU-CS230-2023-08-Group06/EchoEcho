@@ -1,6 +1,6 @@
 
 var genreArray = [];
-var genreArray = JSON.parse(localStorage.getItem('genre_array')) || [];
+var genreArray = JSON.parse(localStorage.getItem('genre_array'));
 function getGenres() {
     var topArtistString = localStorage.getItem('top_artists');
 	if (topArtistString !== null && typeof topArtistString === "string") {
