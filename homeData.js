@@ -126,7 +126,7 @@ function drawTopLists() {
     }
 
     // Create a popup with the canvas image
-    const popup = window.open('', 'Top 5 Lists', 'width=530,height=600');
+    const popup = window.open('', 'Top 5 Lists', 'width=520,height=600');
 	if (!popup) {
         alert('Popup was blocked! Please allow popups for this website.');
         return;
