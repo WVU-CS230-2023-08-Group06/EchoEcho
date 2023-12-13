@@ -1,5 +1,3 @@
-
-var genreArray = [];
 function getGenres() {
     var topArtistString = localStorage.getItem('top_artists');
 	if (topArtistString !== null && typeof topArtistString === "string") {
