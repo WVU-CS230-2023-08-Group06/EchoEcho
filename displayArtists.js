@@ -1,11 +1,17 @@
 // JavaScript Document
+
+/**Function to log the user out*/
 function logout() {
 	localStorage.clear();
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com";
 }
 
+/**Dynamically displays the user's artist data using data in localStorage
+ * 
+ * @param {string} time_range - indicates the time range of the data to be shown
+ */
 function displayArtists(time_range) {
-	//get the array of top artists
+	//Gets the array corresponding to the selected time range
 	if (time_range === 'long_term') {
 		var topArtistsString = localStorage.getItem('top_artists');
 	} else if (time_range === 'medium_term') {
@@ -20,11 +26,12 @@ function displayArtists(time_range) {
 		console.log(topArtistsString); //for debugging
 		var topArtists = JSON.parse(topArtistsString);   // deserializing here
 		console.log("Succesfully retrieved 'tasks' and contents.");
+	} else {
+		console.log("An error occurred while retrieving the data");
 	}
 	
 	//get the list element from topArtistsPage
 	var artistList = document.getElementById('artistList');
-
 	// Clear existing list content
 	artistList.innerHTML = '';
 
@@ -47,7 +54,6 @@ function displayArtists(time_range) {
 			
 			//Append components to list
 			listItem.appendChild(artistPicture);
-			//listItem.appendChild(genre);
 			listItem.appendChild(artistLink);
 			console.log(artist.name);
 			artistList.appendChild(listItem);
@@ -69,6 +75,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	onPageLoad('long');
   });
   
+  /**Calls displayArtists with the selected time range
+   * 
+   * @param {string} timeRange - details the time range for the data
+   */
   function onPageLoad(timeRange) {
 	switch (timeRange) {
 	  case 'long':

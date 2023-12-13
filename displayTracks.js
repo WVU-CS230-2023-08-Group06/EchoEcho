@@ -6,7 +6,7 @@ function logout() {
 	window.location.href = "https://main.d3ontvtqcgyr6j.amplifyapp.com";
 }
 
-/**Dynamically displays the user's data using data in localStorage
+/**Dynamically displays the user's track data using data in localStorage
  * 
  * @param {string} time_range - indicates the time range of the data to be shown
  */
@@ -20,7 +20,7 @@ function displayTracks(time_range) {
 		var topTracksString = localStorage.getItem('top_tracks_4wk');
 	}
 
-	//Ensure that the data existws
+	//Ensure that the data exists
 	if (topTracksString !== null && typeof topTracksString === "string") {
 		console.log(topTracksString);
 		var topTracks = JSON.parse(topTracksString);   // deserializing here
@@ -37,6 +37,7 @@ function displayTracks(time_range) {
 	//Create the dynamic list elements
 	if (topTracks) {
 		topTracks.forEach(function(track) {
+			//Create list element
 			var listItem = document.createElement('li');
 			listItem.className = 'trackList';
 
