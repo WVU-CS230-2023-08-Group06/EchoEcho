@@ -34,18 +34,18 @@ header {
 	overflow-x: auto;
 	overflow-y: auto;
 }
-.recommendationsList {
+.recommendedTrackList {
     margin-bottom:10px;
     border:1px solid #000;
     border-radius:10px;
 }
 
-.recommendationsList:hover {
+.recommendedTrackList:hover {
     background-color:#000;
     color:white;
 }
 
-.recommendationsLinks {
+.trackLinks {
     color:white;
     display:block;
     padding:30px;
@@ -55,9 +55,20 @@ header {
     height:100%;*/
 }
 
-.recommendationsLinks:hover {
+.trackLinks:hover {
     background-color:magenta;
     color:black;
+}
+
+.trackImg {
+    display:inline-block;
+    height:100px;
+    border-radius:10px;
+    padding: 20px 20px;
+}
+
+.trackGenre {
+    display:inline-block;
 }
 
 
@@ -96,6 +107,23 @@ header {
   }
   
   .navBar a.active {
+    background-color: orchid;
+    color: white;
+  }
+
+  #logoutBtn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 14px 16px;
+    font-size: 17px;
+    background-color: purple; /* Change button background color to pink */
+    color: white; /* Change button text color to purple */
+    border: none;
+    cursor: pointer;
+  }
+
+  #logoutBtn:hover {
     background-color: orchid;
     color: white;
   }
