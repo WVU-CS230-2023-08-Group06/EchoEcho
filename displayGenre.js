@@ -41,16 +41,18 @@ function displayGenreChart() {
             }]
         },
         options: {
-            tooltips: {
-                callbacks: {
-                    label: function(tooltipItem, data) {
-                        var genreIndex = tooltipItem.index;
-                        return data.labels[genreIndex] + ': ' + data.datasets[0].data[genreIndex] + ' occurrences';
+            responsive: false, // Ensure responsiveness is turned off
+            maintainAspectRatio: false, // Ensure aspect ratio is not maintained
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var genreIndex = tooltipItem.index;
+                            return data.labels[genreIndex] + ': ' + data.datasets[0].data[genreIndex] + ' occurrences';
+                        }
                     }
-                }
+                }   
             }
-        }
-    });
+        });
 }
 
 // Trigger displayGenreChart when the window is loaded
