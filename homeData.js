@@ -94,26 +94,34 @@ function drawTopLists() {
     var background = new Image();
     background.src = "/sharingBackground.png";
 
+	// Function to draw centered text
+	function drawCenteredText(text, x, y) {
+    const textWidth = ctx.measureText(text).width;
+    const centeredX = x - (textWidth / 2);
+    ctx.fillText(text, centeredX, y);
+	}
+
     background.onload = function() {
         ctx.drawImage(background, 0, 0);
 
 		ctx.fillStyle = 'White';
 		ctx.font = '20px Arial';
-		ctx.fillText('Top 5 Artists', 150, 40);
+
+		// Draw list 1 - Top 5 Artists
+		const title1 = 'Top 5 Artists';
+		drawCenteredText(title1, canvas.width / 2, 40);
 		for (let i = 0; i < fiveArtists.length; i++) {
-			ctx.fillText(`${i + 1}. ${fiveArtists[i]}`, 150, 70 + i * 20);
+    		drawCenteredText(`${i + 1}. ${fiveArtists[i]}`, canvas.width / 2, 70 + i * 20);
 		}
-		
+
 		// Calculate the starting position for list 2, depending on the length of list 1
-		// Assuming a 20px line height and an additional 30px spacing between the lists
 		let list2StartY = 70 + fiveArtists.length * 20 + 30;
-		
+
 		// Draw list 2 - Top 5 Tracks
-		ctx.fillStyle = 'White';
-		ctx.font = '20px Arial'; // Corrected the font size syntax
-		ctx.fillText('Top 5 Tracks', 150, list2StartY);
+		const title2 = 'Top 5 Tracks';
+		drawCenteredText(title2, canvas.width / 2, list2StartY);
 		for (let i = 0; i < fiveTracks.length; i++) {
-			ctx.fillText(`${i + 1}. ${fiveTracks[i]}`, 150, list2StartY + 30 + i * 20);
+    		drawCenteredText(`${i + 1}. ${fiveTracks[i]}`, canvas.width / 2, list2StartY + 30 + i * 20);
 		}
     }
 
