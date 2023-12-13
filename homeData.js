@@ -115,7 +115,7 @@ function drawTopLists() {
 		}
 
 		// Calculate the starting position for list 2, depending on the length of list 1
-		let list2StartY = 70 + fiveArtists.length * 20 + 30;
+		let list2StartY = 70 + fiveArtists.length * 30 + 30;
 
 		// Draw list 2 - Top 5 Tracks
 		const title2 = 'Top 5 Tracks';
@@ -126,29 +126,38 @@ function drawTopLists() {
     }
 
     // Create a popup with the canvas image
-    const popup = window.open('', 'Top 5 Lists', 'width=510,height=700');
+    const popup = window.open('', 'Top 5 Lists', 'width=530,height=600');
 	if (!popup) {
         alert('Popup was blocked! Please allow popups for this website.');
         return;
     }
     popup.document.body.appendChild(canvas);
 
-	// Add Twitter share link
+	// Add instructions for saving and sharing
+    const instructions = popup.document.createElement('p');
+    instructions.textContent = 'Right-click on the image to save it to your device. Share it with your friends using the links below!';
+    instructions.style = 'text-align: center; margin-top: 20px;';
+    popup.document.body.appendChild(instructions);
+
+    // Add Twitter share link
     const twitterLink = popup.document.createElement('a');
     twitterLink.href = 'https://twitter.com/intent/tweet?text=Check%20this%20amazing%20website%20out!&url=https://main.d3ontvtqcgyr6j.amplifyapp.com/';
     twitterLink.target = '_blank';
     const twitterImg = popup.document.createElement('img');
-    twitterImg.src = '*/twitterX.png';
+    twitterImg.src = 'twitterX.png';
     twitterImg.alt = 'Share on Twitter';
+    twitterImg.style = 'margin: 10px;';
     twitterLink.appendChild(twitterImg);
     popup.document.body.appendChild(twitterLink);
 
     // Add Facebook share link
     const facebookLink = popup.document.createElement('a');
     facebookLink.href = 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmain.d3ontvtqcgyr6j.amplifyapp.com%2F';
+    facebookLink.target = '_blank';
     const facebookImg = popup.document.createElement('img');
-    facebookImg.src = 'facebookIcon.png'; 
+    facebookImg.src = 'facebookIcon.png';
     facebookImg.alt = 'Share on Facebook';
+    facebookImg.style = 'margin: 10px;';
     facebookLink.appendChild(facebookImg);
     popup.document.body.appendChild(facebookLink);
 }
