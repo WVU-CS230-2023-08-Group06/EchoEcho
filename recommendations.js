@@ -12,7 +12,7 @@ async function getRecommendations() {
     // Check if topTracks exist and is an array
     if (!topTracks || !Array.isArray(topTracks) || topTracks.length === 0) {
         console.error('No top tracks found.');
-        return null;
+        return;
     }
 
     // Extract track IDs from topTracks
@@ -26,45 +26,43 @@ async function getRecommendations() {
         });
 
         const data = await response.json();
-
-        if (data && data.tracks && data.tracks.length > 0) {
-            const recommendedTracks = data.tracks;
-            console.log('Recommended tracks:', recommendedTracks);
-            return recommendedTracks;
-        } else {
-            console.warn('No recommended tracks found. Trying different approach.');
-            // If no recommendations were found, try to fetch general recommendations
-            return await fetchGeneralRecommendations();
-        }
+        const recommendedTracks = data.tracks;
+        console.log('Recommended tracks:', recommendedTracks);
+        return recommendedTracks;
     } catch (error) {
         console.error('Error fetching recommendations:', error);
         return null;
     }
 }
 
-async function fetchGeneralRecommendations() {
-    let accessToken = localStorage.getItem('access_token');
+function displayTracksOnPage(tracks) {
+    const trackListElement = document.getElementById('recommendedTracksList');
 
-    try {
-        const response = await fetch(`https://api.spotify.com/v1/recommendations?limit=5`, {
-            headers: {
-                Authorization: 'Bearer ' + accessToken,
-            },
+    // Clear existing contents
+    trackListElement.innerHTML = '';
+
+    if (tracks && tracks.length > 0) {
+        tracks.forEach(track => {
+            const listItem = document.createElement('li');
+            listItem.className = 'trackList';
+
+            const trackPicture = document.createElement('img');
+            trackPicture.src = track.album.images[0].url;
+            trackPicture.className = 'trackImg';
+
+            const trackLink = document.createElement('a');
+            trackLink.href = track.external_urls.spotify;
+            trackLink.textContent = track.name;
+            trackLink.className = 'trackLinks';
+
+            listItem.appendChild(trackPicture);
+            listItem.appendChild(trackLink);
+            trackListElement.appendChild(listItem);
         });
-
-        const data = await response.json();
-
-        if (data && data.tracks && data.tracks.length > 0) {
-            const recommendedTracks = data.tracks;
-            console.log('General recommended tracks:', recommendedTracks);
-            return recommendedTracks;
-        } else {
-            console.error('No general recommended tracks found.');
-            return null;
-        }
-    } catch (error) {
-        console.error('Error fetching general recommendations:', error);
-        return null;
+    } else {
+        const noTracksMessage = document.createElement('p');
+        noTracksMessage.textContent = 'No recommended tracks found.';
+        trackListElement.appendChild(noTracksMessage);
     }
 }
 
