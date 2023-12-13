@@ -16,7 +16,7 @@ async function getRecommendations() {
     }
 
     // Extract track IDs from topTracks
-    let trackIds = topTracks.map(track => track.id).join(',');
+    let trackIds = topTracks.slice(0, 5).map(track => track.id).join(',');
 
     try {
         const response = await fetch(`https://api.spotify.com/v1/recommendations?limit=5&seed_tracks=${trackIds}`, {
