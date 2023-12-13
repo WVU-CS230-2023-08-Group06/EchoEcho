@@ -12,7 +12,7 @@ async function getRecommendations() {
     // Check if topTracks exist and is an array
     if (!topTracks || !Array.isArray(topTracks) || topTracks.length === 0) {
         console.error('No top tracks found.');
-        return;
+        return null;
     }
 
     // Extract track IDs from topTracks
@@ -26,9 +26,15 @@ async function getRecommendations() {
         });
 
         const data = await response.json();
-        const recommendedTracks = data.tracks;
-        console.log('Recommended tracks:', recommendedTracks);
-        return recommendedTracks;
+
+        if (data && data.tracks && data.tracks.length > 0) {
+            const recommendedTracks = data.tracks;
+            console.log('Recommended tracks:', recommendedTracks);
+            return recommendedTracks;
+        } else {
+            console.error('No recommended tracks found.');
+            return null;
+        }
     } catch (error) {
         console.error('Error fetching recommendations:', error);
         return null;
