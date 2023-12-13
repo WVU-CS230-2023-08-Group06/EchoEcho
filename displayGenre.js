@@ -1,9 +1,32 @@
 
-document.addEventListener('DOMContentLoaded', function () {
-	displayArtists();
-	displayTracks();
-	getGenres();
-});
+var genreArray = [];
+function getGenres() {
+    var topArtistString = localStorage.getItem('top_artists');
+	if (topArtistString !== null && typeof topArtistString === "string") {
+		var topArtists = JSON.parse(topArtistString);   // deserializing here
+		console.log("Succesfully retrieved artists.");
+	}
+    topArtists.forEach(function(artist) {
+        var genres = artist.genres;
+        for (i in genres) {
+            var found = false;
+            for (var j in genreArray) {
+                if (genres[i] === genreArray[j][0]) {
+                    genreArray[j][1]++;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                genreArray.push([genres[i], 1]);
+            }
+        }
+    });
+	genreArray.sort(function(a, b) {
+    	return b[1] - a[1];
+    });
+    console.log(genreArray);
+}
 
 function displayGenre() {
     // Assuming you have an HTML element with id "genreList" to display genres
