@@ -1,4 +1,4 @@
-function displayGenre(){
+console.log('Script executed');
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve genre data from local storage
     var genreArray = JSON.parse(localStorage.getItem('genre_array')) || [];
@@ -60,4 +60,3 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Canvas element with id "genreChart" not found.');
     }
 });
-}
