@@ -125,6 +125,14 @@ function drawTopLists() {
 		}
     }
 
+    // Create a popup with the canvas image
+    const popup = window.open('', 'Top 5 Lists', 'width=510,height=700');
+	if (!popup) {
+        alert('Popup was blocked! Please allow popups for this website.');
+        return;
+    }
+    popup.document.body.appendChild(canvas);
+
 	// Add Twitter share link
     const twitterLink = popup.document.createElement('a');
     twitterLink.href = 'https://twitter.com/intent/tweet?text=Check%20this%20amazing%20website%20out!&url=https://main.d3ontvtqcgyr6j.amplifyapp.com/';
@@ -143,15 +151,6 @@ function drawTopLists() {
     facebookImg.alt = 'Share on Facebook';
     facebookLink.appendChild(facebookImg);
     popup.document.body.appendChild(facebookLink);
-	
-    // Create a popup with the canvas image
-    const popup = window.open('', 'Top 5 Lists', 'width=510,height=700');
-	if (!popup) {
-        alert('Popup was blocked! Please allow popups for this website.');
-        return;
-    }
-    popup.document.body.appendChild(canvas);
-
 }
 
 document.addEventListener('DOMContentLoaded', function () {
