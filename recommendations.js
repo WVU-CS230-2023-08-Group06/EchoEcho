@@ -35,36 +35,36 @@ async function getRecommendations() {
     }
 }
 
-// function displayTracksOnPage(tracks) {
-//     const trackListElement = document.getElementById('recommendedTracksList');
+function displayTracksOnPage(tracks) {
+    const trackListElement = document.getElementById('recommendedTracksList');
 
-//     // Clear existing contents
-//     trackListElement.innerHTML = '';
+    // Clear existing contents
+    trackListElement.innerHTML = '';
 
-//     if (tracks && tracks.length > 0) {
-//         tracks.forEach(track => {
-//             const listItem = document.createElement('li');
-//             listItem.className = 'trackList';
+    if (tracks && tracks.length > 0) {
+        tracks.forEach(track => {
+            const listItem = document.createElement('li');
+            listItem.className = 'trackList';
 
-//             const trackPicture = document.createElement('img');
-//             trackPicture.src = track.album.images[0].url;
-//             trackPicture.className = 'trackImg';
+            const trackPicture = document.createElement('img');
+            trackPicture.src = track.album.images[0].url;
+            trackPicture.className = 'trackImg';
 
-//             const trackLink = document.createElement('a');
-//             trackLink.href = track.external_urls.spotify;
-//             trackLink.textContent = track.name;
-//             trackLink.className = 'trackLinks';
+            const trackLink = document.createElement('a');
+            trackLink.href = track.external_urls.spotify;
+            trackLink.textContent = track.name;
+            trackLink.className = 'trackLinks';
 
-//             listItem.appendChild(trackPicture);
-//             listItem.appendChild(trackLink);
-//             trackListElement.appendChild(listItem);
-//         });
-//     } else {
-//         const noTracksMessage = document.createElement('p');
-//         noTracksMessage.textContent = 'No recommended tracks found.';
-//         trackListElement.appendChild(noTracksMessage);
-//     }
-// }
+            listItem.appendChild(trackPicture);
+            listItem.appendChild(trackLink);
+            trackListElement.appendChild(listItem);
+        });
+    } else {
+        const noTracksMessage = document.createElement('p');
+        noTracksMessage.textContent = 'No recommended tracks found.';
+        trackListElement.appendChild(noTracksMessage);
+    }
+}
 
 // Usage example
 // async function displayRecommendations() {
@@ -79,38 +79,38 @@ async function getRecommendations() {
 // // Call the function to get and display recommendations
 // displayRecommendations();
 
-function displayTracksOnPage() {
-    var recommendationString = localStorage.getItem('Recommended_tracks');
+// function displayTracksOnPage() {
+//     var recommendationString = localStorage.getItem('Recommended_tracks');
 
-    if (recommendationString !== null && typeof recommendationString === "string") {
-		console.log(recommendationString);
-		var tracks = JSON.parse(recommendationString);   // deserializing here
-		console.log("Succesfully retrieved 'tasks' and contents.");
-	}
+//     if (recommendationString !== null && typeof recommendationString === "string") {
+// 		console.log(recommendationString);
+// 		var tracks = JSON.parse(recommendationString);   // deserializing here
+// 		console.log("Succesfully retrieved 'tasks' and contents.");
+// 	}
 
-    const trackListElement = document.getElementById('recommendedTracksList');
+//     const trackListElement = document.getElementById('recommendedTracksList');
 
-    // Clear existing contents
-    trackListElement.innerHTML = '';
+//     // Clear existing contents
+//     trackListElement.innerHTML = '';
 
-    if (tracks && tracks.length > 0) {
-        tracks.forEach(track => {
-            var listItem = document.createElement('li');
-            listItem.className = 'trackList';
+//     if (tracks && tracks.length > 0) {
+//         tracks.forEach(track => {
+//             var listItem = document.createElement('li');
+//             listItem.className = 'trackList';
 
-            var trackPicture = document.createElement('img');
-            trackPicture.src = track.album.images[0].url;
-            trackPicture.className = 'trackImg';
+//             var trackPicture = document.createElement('img');
+//             trackPicture.src = track.album.images[0].url;
+//             trackPicture.className = 'trackImg';
 
-            var trackLink = document.createElement('a');
-            trackLink.href = track.external_urls.spotify;
-            trackLink.textContent = track.name;
-            trackLink.className = 'trackLinks';
+//             var trackLink = document.createElement('a');
+//             trackLink.href = track.external_urls.spotify;
+//             trackLink.textContent = track.name;
+//             trackLink.className = 'trackLinks';
 
-            listItem.appendChild(trackPicture);
-            listItem.appendChild(trackLink);
-            console.log(track.name);
-            trackListElement.appendChild(listItem);
-        });
-    }
-}
+//             listItem.appendChild(trackPicture);
+//             listItem.appendChild(trackLink);
+//             console.log(track.name);
+//             trackListElement.appendChild(listItem);
+//         });
+//     }
+// }
