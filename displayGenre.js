@@ -1,3 +1,10 @@
+
+document.addEventListener('DOMContentLoaded', function () {
+	displayArtists();
+	displayTracks();
+	getGenres();
+});
+
 function displayGenre() {
     // Assuming you have an HTML element with id "genreList" to display genres
     var genreListElement = document.getElementById('genreList');

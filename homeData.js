@@ -180,7 +180,6 @@ function getGenres() {
 
 // Assuming genreArray is available locally, either defined in another script or fetched from local storage
 // var genreArray = [ ['Genre1', 10], ['Genre2', 8], ['Genre3', 6], ['Genre4', 5], ['Genre5', 4] ];
-
 // Function to display the top 5 genres
 function displayTopGenres() {
     // Assuming you have an HTML element with id "genreList" to display genres
