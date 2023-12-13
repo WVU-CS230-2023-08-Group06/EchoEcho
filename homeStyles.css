@@ -42,7 +42,7 @@ header {
     padding: 15px 15px;
 }
 
-.artistList, .trackList{
+.artistList, .trackList, .genreList{
     margin-bottom:10px;
     border:1px solid #000;
     border-radius:10px;
