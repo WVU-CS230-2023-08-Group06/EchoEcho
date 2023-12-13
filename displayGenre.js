@@ -1,6 +1,7 @@
 // Assuming you have an HTML canvas element with id "genreChart"
 var ctx = document.getElementById('genreChart').getContext('2d');
 
+document.addEventListener('DOMContentLoaded', function() {
 // Create the centered pie chart
 var pieChart = new Chart(ctx, {
     type: 'pie',
@@ -39,6 +40,4 @@ var pieChart = new Chart(ctx, {
         },
     }
 });
-
-// Trigger displayGenreChart when the window is loaded
-window.addEventListener('load', displayGenreChart);
+});
