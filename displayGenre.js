@@ -1,26 +1,58 @@
 // Retrieve genreArray from local storage
 var genreArray = JSON.parse(localStorage.getItem('genre_array')) || [];
 
-// Function to display the top 20 genres
-function displayTopGenres() {
+// Function to create and display the pie chart
+function displayGenreChart() {
     // Sort genreArray based on the count (genreArray[i][1]) in descending order
     genreArray.sort(function(a, b) {
         return b[1] - a[1];
     });
 
-    // Assuming element with id "genreList" to display genres
-    var genreListElement = document.getElementById('genreList');
+    // Get the top 20 genres
+    var topGenres = genreArray.slice(0, 20);
 
-    // Clear the existing content in the genreListElement
-    genreListElement.innerHTML = '';
+    // Extract genre names and counts for the chart
+    var genreNames = topGenres.map(function(genre) {
+        return genre[0];
+    });
 
-    // Display only the top 20 genres
-    for (var i = 0; i < Math.min(20, genreArray.length); i++) {
-        var listItem = document.createElement('li');
-        listItem.textContent = genreArray[i][0] + ' - ' + genreArray[i][1] + ' occurrences';
-        genreListElement.appendChild(listItem);
-    }
+    var genreCounts = topGenres.map(function(genre) {
+        return genre[1];
+    });
+
+    // Assuming you have an HTML canvas element with id "genreChart"
+    var ctx = document.getElementById('genreChart').getContext('2d');
+
+    // Create the pie chart
+    var pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: genreNames,
+            datasets: [{
+                data: genreCounts,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(153, 102, 255, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    // Add more colors as needed
+                ],
+            }]
+        },
+        options: {
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var genreIndex = tooltipItem.index;
+                        return data.labels[genreIndex] + ': ' + data.datasets[0].data[genreIndex] + ' occurrences';
+                    }
+                }
+            }
+        }
+    });
 }
 
-// Trigger displayTopGenres when the window is loaded
-window.addEventListener('load', displayTopGenres);
+// Trigger displayGenreChart when the window is loaded
+window.addEventListener('load', displayGenreChart);
