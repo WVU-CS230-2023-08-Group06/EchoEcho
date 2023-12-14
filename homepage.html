@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+	<!--defining css and js links-->
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="homeStyles.css">
     <script src=homeData.js></script>
@@ -8,30 +9,37 @@
 
 <body>
 	<div class="container">
+		<!--logout button which clears local storage and refreshes-->
 		<button type="button" id="logoutBtn" onclick="logout()">Logout</button>
 
 		<header>
 			<h1>Your Music in Review</h1>
 		</header>
-
+		
+		<!--div for top 5 tracks-->
 		<div class="trackDisplay">
 			<a href="topTracksPage.html">
-			<button type="button" id="tracksButton">Top Tracks</button>
+				<!--button to redirect user to top tracks page-->
+				<button type="button" id="tracksButton">Top Tracks</button>
 			</a>
 			<div class="stickyHeader"></div>
 			<ol id="trackList"></ol>
 		</div>
 
+		<!--div for top 5 artists-->
 		<div class="artistDisplay">
 			<a href="topArtistPage.html">
+				<!--button to redirect user to top artists page-->
 				<button type="button" id="tracksButton">Top Artists</button>
 			</a>		
 			<div class="stickyHeader"></div>
 			<ol id="artistList"></ol>
 		</div>
 
+		<!--div for top 5 genres-->
 		<div class="genreDisplay">
 			<a href="genrePage.html">
+				<!--button to redirect user to top genres page-->
 				<button type="button" id="tracksButton">Top Genres</button>
 			</a>		
 			<div class="stickyHeader"></div>
@@ -39,14 +47,17 @@
 			<a href="genrePage.html">
 		</div>
 
+		<!--footer holding links for reccomendations button and social sharing-->
 		<footer>
 
 			<div class="makeRecommendations">
 				<a href="recommendations.html">
+					<!--button redirect to reccomandations page-->
 					<button type="button" id="recommendationsButton">Get Recommendations!</button>
 				</a>		
 			</div>
-
+			
+			<!--button that triggers popup for social media sharing -->
 			<button type="button" id="socialShareButton" onclick="drawTopLists()">Share Your Tastes!</button>
 		
 		</footer>
