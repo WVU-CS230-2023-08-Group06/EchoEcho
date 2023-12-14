@@ -25,11 +25,11 @@ header {
 
 /* Add spacing between the footer buttons */
 #recommendationsButton {
-    margin-right: 10px; /* Adjust the margin as needed */
+    margin-bottom: 10px; /* Adjust the margin as needed */
 }
 
 #socialShareButton {
-    margin-left: 10px; /* Adjust the margin as needed */
+    margin-top: 10px; /* Adjust the margin as needed */
 }
 
 .stickyHeader {
