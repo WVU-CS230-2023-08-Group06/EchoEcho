@@ -51,29 +51,33 @@ function displayArtists() {
 
 
 function displayTracks() {
-	
+    //getting topTracks from local storage
 	var topTracksString = localStorage.getItem('top_tracks');
 if (topTracksString !== null && typeof topTracksString === "string") {
     console.log(topTracksString);
-	var topTracks = JSON.parse(topTracksString);   // deserializing here
+	var topTracks = JSON.parse(topTracksString);  // deserializing here
     console.log("Succesfully retrieved tracks.");
 }
-	
+    //get the list element from topTracksPage
 	var trackList = document.getElementById('trackList');
 	if (topTracks) {
 		topTracks.slice(0, 5).forEach(function(track) {
+            //displaying track name
 			var listItem = document.createElement('li');
 			listItem.className = 'trackList';
 			
+            //displaying track image
 			var trackPicture = document.createElement('img');
 			trackPicture.src = track.album.images[0].url;
 			trackPicture.className = 'trackImg';
 
+            //displaying track link to spotify page
 			var trackLink = document.createElement('a');
 			trackLink.href = track.external_urls.spotify;
 			trackLink.textContent = track.name;
 			trackLink.className = 'trackLinks';
 			
+            //adding all items to the list and logging it to the console
 			listItem.appendChild(trackPicture);
 			listItem.appendChild(trackLink);
 			console.log(track.name);
@@ -169,30 +173,37 @@ document.addEventListener('DOMContentLoaded', function () {
 	getGenres();
     displayTopGenres();
 });
-
+//initialize array to store genres
 var genreArray = [];
+
 function getGenres() {
+    //get the list element from topArtistsPage
     var topArtistString = localStorage.getItem('top_artists');
 	if (topArtistString !== null && typeof topArtistString === "string") {
 		var topArtists = JSON.parse(topArtistString);   // deserializing here
 		console.log("Succesfully retrieved artists.");
 	}
+    //function iterates through each artist and finds their corresponding genres
     topArtists.forEach(function(artist) {
+        //set genres to be equal to the found genres
         var genres = artist.genres;
         for (i in genres) {
             var found = false;
             for (var j in genreArray) {
+                //add weights to the genres for how many times they show up
                 if (genres[i] === genreArray[j][0]) {
                     genreArray[j][1]++;
                     found = true;
                     break;
                 }
             }
+            //when a duplicate is found increment and push down
             if (!found) {
                 genreArray.push([genres[i], 1]);
             }
         }
     });
+    //sorts the array in decesending order
 	genreArray.sort(function(a, b) {
     	return b[1] - a[1];
     });
@@ -218,4 +229,3 @@ function displayTopGenres() {
         genreListElement.appendChild(listItem);
     }
 }
-
