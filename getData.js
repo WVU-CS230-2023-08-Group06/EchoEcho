@@ -179,7 +179,6 @@ async function getTopTracks(time_range) {
 	  //Store recieved data in JSON format
 	  const data = await response.json();
 	  if (data.items && data.items.length > 0) {
-		allTracks = [];
 		allTracks = allTracks.concat(data.items);
 		//Check for pagination and fetch the next page if available
 		if (data.next) {
